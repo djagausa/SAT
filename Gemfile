@@ -1,10 +1,14 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+# Use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '3.0.1'
 
+# ActiveAdmin requires sass-rails; meta_search
+
+gem 'activeadmin', github: 'gregbell/active_admin'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -26,26 +30,43 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-# Use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
 group :development, :test do
+	gem 'hirb'
 	# Use sqlite3 as the database for Active Record
-	gem 'sqlite3'
-	gem 'rspec-rails'
+	gem 'sqlite3', '1.3.8'
+  gem 'rspec-rails'
+  gem 'spork'
+  gem 'spork-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem "factory_girl_rails", "~> 4.2.1"
+  gem 'childprocess', '0.3.6'
+  gem 'rails-footnotes', '>= 3.7.9'
 end
 
 group :test do
-	gem 'selenium-webdriver', '2.35.1'
-  	gem 'capybara', '2.1.0'
+  gem "faker", "~> 1.2.0"
+  gem "capybara", "~> 2.1.0"
+  gem "database_cleaner", "~> 1.0.1"
+  gem "launchy", "~> 2.3.0"
+  gem "selenium-webdriver", "~> 2.35.1"
+  gem 'growl', '1.0.3'
 end
 
 group :production do
-	gem 'pg'
-	gem 'rails_12factor'
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor', '0.0.2'
 end
+
+gem 'simple_form', '~> 3.0.0'
+gem 'bootstrap-sass', '~> 2.3.1.0'
+gem "twitter-bootstrap-rails"
+gem 'paperclip'
+gem 'geocoder'
+
+
