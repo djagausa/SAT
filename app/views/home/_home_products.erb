@@ -1,0 +1,32 @@
+  <div>
+    <% @products.in_groups_of(1, false) do |products| %>
+        <tr>
+          <ul class="thumbnails" > 
+            <% products.each do |product| %>
+              <li class="span12">  
+                <div class="thumbnail" style="height: 200px;">  
+                  <div class="span4 thumb_pic">  
+                    <h5 class="product_name"><%= product.name %></h5>    
+                    <%= image_tag product.photo.url(:small) %>    
+                  </div>
+                  <div class="thumb_data">
+                    <div class="span6 thumb_prod_name">  
+                      <p class="thumb_disc">* <%= product.description %> *</p>
+                      <p class="thumb_price">Sale Price: <%= number_to_currency(product.sale_price) %></p>
+                      <p class="thumb_end">Sales Ends: <%= product.end_date.strftime('%b-%e-%Y') %></p>
+                      <P class="thumb_time">Remaining Days: <%=" #{(product.end_date.to_date - Date.today)} days" %></p>
+                      <P class="thumb_loc">Store: <%= product.store.name %></p>
+                      <P class="thumb_end">Location: <%= product.store.city %>, <%= product.store.state %></p>
+                    </div>         
+                    <div class="caption pull-right">  
+                      <p><a href="#" class="btn btn-success">Share</a> <a href="<%= product_path(product.id)%>" class="btn btn-warning">Info</a></p>  
+                    </div>  
+                  </div> 
+                </div> 
+              </li>  
+          <% end %>
+        </ul> 
+      </tr>
+    <% end %>
+  </div>
+<hr>  
