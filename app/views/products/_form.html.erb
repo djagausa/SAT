@@ -1,0 +1,26 @@
+<%= simple_form_for ([@store, @product]), :html => {:multipart => true, :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :sale_price %>
+  <%= f.input :original_price %>
+  <%= f.input :start_date, as: :date%>
+  <%= f.input :end_date, as: :date %>
+  <%= f.association :category, :include_blank => false  %>
+
+  <%= image_tag @product.photo.url(:small) if @product.photo? %>
+
+  <div class="fileupload fileupload-new" data-provides="fileupload">
+    <div class="fileupload-preview thumbnail" style="width: 100px; height: 100px;"></div>
+      <div>
+        <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><%= f.file_field :photo %></span>
+      <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                store_products_path(@store), :class => 'btn' %>
+  </div>
+	
+<% end %>

@@ -1,0 +1,17 @@
+<%= simple_form_for ([@biz, @store]), :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :street1 %>
+  <%= f.input :street2 %>
+  <%= f.input :city %>
+  <%= f.input :state %>
+  <%= f.input :zip_code %>
+  <%= f.input :phone %>
+  <%= f.input :contact %>
+  <%= f.input :hours %>
+  <%= f.input :days %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                biz_stores_path, :class => 'btn' %>
+  </div>
+<% end %>

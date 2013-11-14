@@ -1,0 +1,31 @@
+<%- model_class = Biz -%>
+<div calss="container">
+  <div class="span8" "page_welcome" >
+    <h2>Welcome <%= @biz.name %></h2>
+  </div>
+  <div class="pull-right">
+  <%= image_tag @biz.logo.url(:small)  if @biz.logo? %>
+
+</div>
+
+<thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:street1) %></th>
+      <th><%= model_class.human_attribute_name(:street2) %></th>
+      <th><%= model_class.human_attribute_name(:city) %></th>
+      <th><%= model_class.human_attribute_name(:state) %></th>
+      <th><%= model_class.human_attribute_name(:zip) %></th>
+      <th><%= model_class.human_attribute_name(:phone) %></th>
+      <th><%= model_class.human_attribute_name(:contact) %></th>
+      <th><%= model_class.human_attribute_name(:hours) %></th>
+      <th><%= model_class.human_attribute_name(:days) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    
+  </tbody>
+</table>
+</div>
+
+

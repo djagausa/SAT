@@ -1,0 +1,50 @@
+<%- model_class = Store -%>
+<div class="page-header">
+  <div class="container">
+    <div class="span6" "page_welcome" >
+      <h2>Welcome <%= @store.name %></h2>
+    </div>
+    <div class="span2">
+    <div class="pull-right">
+      <%= image_tag @biz.logo.url(:small)  if @biz.logo? %>
+    </div>
+    </div>
+  </div>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+  <dd><%= @store.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:street1) %>:</strong></dt>
+  <dd><%= @store.street1 %></dd>
+  <% if @store.street2 != "" %>
+  <dt><strong><%= model_class.human_attribute_name(:street2) %>:</strong></dt>
+  <dd><%= @store.street2 %></dd>
+  <% end %>
+  <dt><strong><%= model_class.human_attribute_name(:city) %>:</strong></dt>
+  <dd><%= @store.city %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:state) %>:</strong></dt>
+  <dd><%= @store.state %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:zip_code) %>:</strong></dt>
+  <dd><%= @store.zip_code %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:phone) %>:</strong></dt>
+  <dd><%= @store.phone %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:contact) %>:</strong></dt>
+  <dd><%= @store.contact %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:hours) %>:</strong></dt>
+  <dd><%= @store.hours %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:days) %>:</strong></dt>
+  <dd><%= @store.days %></dd>
+</dl>
+
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              store_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_store_path(@store), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              store_path(@store),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>

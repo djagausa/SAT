@@ -1,0 +1,32 @@
+<%= simple_form_for @biz, :html => {:multipart => true, :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
+  <%= f.input :website %>
+  <%= f.simple_fields_for :stores do |b| %>
+    <%= b.input :street1 %>
+    <%= b.input :street2 %>
+    <%= b.input :city %>
+    <%= b.input :state %>
+    <%= b.input :zip_code %>
+    <%= b.input :phone_number %>
+    <%= b.input :contact_name %>
+    <%= b.input :hours %>
+    <%= b.input :days %>
+  <% end %>
+
+  <%= image_tag @biz.logo.url(:small) if @biz.logo? %>
+  <div class="fileupload fileupload-new" data-provides="fileupload">
+    <div class="fileupload-preview thumbnail" style="width: 100px; height: 100px;"></div>
+      <div>
+        <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><%= f.file_field :logo %></span>
+      <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                bizs_path, :class => 'btn' %>
+  </div>
+<% end %>
