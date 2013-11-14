@@ -8,7 +8,7 @@ gem 'bcrypt-ruby', '3.0.1'
 
 # ActiveAdmin requires sass-rails; meta_search
 
-gem 'activeadmin', github: 'gregbell/active_admin'
+# gem 'activeadmin', github: 'gregbell/active_admin'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -17,9 +17,6 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
-
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -63,8 +60,8 @@ group :production do
   gem 'rails_12factor', '0.0.2'
 end
 
-gem 'simple_form', '~> 3.0.0'
-gem 'bootstrap-sass', '~> 2.3.1.0'
+gem 'simple_form'
+gem 'bootstrap-sass'
 gem "twitter-bootstrap-rails"
 gem 'paperclip'
 gem 'geocoder'
