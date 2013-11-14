@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Sat</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
+  <head>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <title>Shop Around Town</title>
+    <%= stylesheet_link_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  
+  <body>
+    <%= render :partial => 'head_nav' %>
+    <div class="container master-container">
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Copyright 2013 <a href="#">Shop Around Town</a></p>
+        <ul class="footer-links">
+          <li><a href="#">Shop Around Town</a></li>
+        </ul>
+      </div>
+    </footer>
+    <%= javascript_include_tag "application" %>
+  </body>
 </html>
+
+
+
