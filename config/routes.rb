@@ -1,6 +1,14 @@
 Sat::Application.routes.draw do
   root :to => "home#index"
 
+  get 'stores/geo'
+  post 'stores/geo'
+
+  resources :sessions, only: [:new, :create, :destroy]
+  match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
+
   resources :stores, shallow: true  do
     resources :products
   end
