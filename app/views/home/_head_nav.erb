@@ -13,13 +13,13 @@
             <li><%= link_to "Register Shopper", new_shopper_path %></li>
             <li><%= link_to "Register Business", new_biz_path %></li>
           </ul>
-        </li>
-      </ul>
+        </li>  <!-- dropdown -->
+      </ul>  <!-- nav  -->
       <%= simple_form_for(:session, :url => sessions_path, :html => {:class => "form-inline" })  do |f| %>
         <%= f.input_field :email, :placeholder=>"Email", :class=> "input-medium" %>
         <%= f.input_field :password, :placeholder=>"Password", :class=> "input-medium" %>
         <%= f.submit "Login", :class=> "btn" %>
       <% end %>
-    </div>
-  </div>
+    </div>  <!-- container  -->
+  </div>  <!-- navbar-inner  -->
 </header>
