@@ -5,8 +5,7 @@
         <ul class="nav">
           <li><%= link_to "Home", root_path %></li>
           <li><%= link_to "New Store", new_biz_store_path(@biz) %></li>
-          
-          </li>
+          <li><%= link_to "New Product", new_store_product_path(@biz.stores) %></li>
         </ul>
       </div>
     </div>

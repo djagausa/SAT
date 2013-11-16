@@ -1,13 +1,13 @@
 class HomeController < ApplicationController
    def index
   	@products=Product.not_expired
-  	@categories=Category.all(:order => "name ASC")
 
   end
 
   def create
 	respond_to do |format|
-		format.js {@zip=params[:zip_code], @distance=params[:distance]}
+        
+		format.js {@zip=params[:zip_code], @distance=params[:distance], @product_cats = params[:store][:category_ids][0...-1] }
 	end
   end
 end

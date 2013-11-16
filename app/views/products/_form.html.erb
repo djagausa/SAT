@@ -3,8 +3,8 @@
   <%= f.input :description %>
   <%= f.input :sale_price %>
   <%= f.input :original_price %>
-  <%= f.input :start_date, as: :date%>
-  <%= f.input :end_date, as: :date %>
+  <%= f.input :from_date, as: :date%>
+  <%= f.input :to_date, as: :date %>
   <%= f.association :category, :include_blank => false  %>
 
   <%= image_tag @product.photo.url(:small) if @product.photo? %>
