@@ -41,8 +41,9 @@ class StoresController < ApplicationController
     @store.destroy
   end
 
+
   def geo
-    @stores = Store.includes(:products).near(params[:store][:zip_code], params[:store][:distance])
+    @stores = Store.includes(:products).near(params[:store][:zip_code])
   end
 
   private

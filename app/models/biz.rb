@@ -2,6 +2,7 @@ class Biz < ActiveRecord::Base
 	has_many :bizizations
 	has_many :shoppers, through: :bizization
 	has_many :stores
+	has_many :products
 
 	before_save { self.email = email.downcase }
 
@@ -23,4 +24,12 @@ class Biz < ActiveRecord::Base
  	scope :by_email, ->(email) {where("email == ?", email)}
 
  	accepts_nested_attributes_for :stores
+
+ 	# class method that checks whether the user's email and submitted_password are valid
+	def self.authenticate(email, submitted_password)
+	  	user = find_by_email(email)
+
+	   	return nil if user.nil?
+	   	return user if user.authenticate(submitted_password)
+	end
 end

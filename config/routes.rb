@@ -7,25 +7,24 @@ Sat::Application.routes.draw do
   post 'stores/geo'
 
   resources :sessions, only: [:new, :create, :destroy]
-  match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
-  resources :stores, shallow: true  do
-    resources :products
-  end
+  resources :home, only: [:index]
 
+  resources :stores
+  resources :shoppers
+
+  resources :products
+  
   resources :categories, shallow: true  do
     resources :products
   end
 
   resources :bizs, shallow: true do
     resources :stores
+    resources :products
   end 
-
-  resources :shoppers
-  resources :home
-  resources :products
 
 
   # The priority is based upon order of creation: first created -> highest priority.

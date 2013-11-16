@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def index
      respond_to do |format|
         format.html { @products = Product.all }
-        format.js { @products = Category.find(params[:category_id]).products.includes(:store)}
+        format.js { @products = Category.find(params[:category_id]).products.includes(:biz).includes(:store)}
       end
   end
 
@@ -13,13 +13,14 @@ class ProductsController < ApplicationController
   # GET /products/1
   def show
     @categories=Category.all
-    @store = Store.find(@product.store_id)
+    @biz = Biz.find(@product.biz_id)
+    @stores = @biz.stores
   end
 
   # GET /products/new
   def new
-    @store = Store.find(params[:store_id])
-    @product = Product.new
+    @biz = Biz.find(params[:biz_id])
+    @product = @biz.products.new
     @categorization = Categorization.new 
   end
 
@@ -29,7 +30,8 @@ class ProductsController < ApplicationController
 
   # POST /products
   def create
-    @product = Store.find(params[:store_id]).products.new(product_params)
+    @biz = Biz.find(params[:biz_id])
+    @product = @biz.products.new(product_params)
     # @product.store_id = params[:store_id]
     if @product.save
       # render text: params
@@ -63,6 +65,6 @@ class ProductsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def product_params
-      params.require(:product).permit(:sale_price, :name, :original_price, :start_date, :end_date, :category_id, :description, :photo)
+      params.require(:product).permit(:sale_price, :name, :original_price, :from_date, :to_date, :category_id, :description, :photo, :biz_id)
     end
 end

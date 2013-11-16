@@ -32,6 +32,10 @@ describe Biz do
 		it { should respond_to(:stores) }
 	end
 
+	context "Associations" do
+		it { should respond_to(:products) }
+	end
+
 	context "email address with mixed case" do
     	let(:mixed_case_email) { "Foo@ExAMPle.CoM" }
 

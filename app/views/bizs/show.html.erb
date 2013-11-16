@@ -1,30 +1,47 @@
 <%- model_class = Biz -%>
-<div calss="container">
+<div class="container">
   <div class="span8" "page_welcome" >
     <h2>Welcome <%= @biz.name %></h2>
   </div>
-  <div class="pull-right">
-  <%= image_tag @biz.logo.url(:small)  if @biz.logo? %>
-
-</div>
-  <thead>
-    <tr>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:street1) %></th>
-      <th><%= model_class.human_attribute_name(:street2) %></th>
-      <th><%= model_class.human_attribute_name(:city) %></th>
-      <th><%= model_class.human_attribute_name(:state) %></th>
-      <th><%= model_class.human_attribute_name(:zip) %></th>
-      <th><%= model_class.human_attribute_name(:phone) %></th>
-      <th><%= model_class.human_attribute_name(:contact) %></th>
-      <th><%= model_class.human_attribute_name(:hours) %></th>
-      <th><%= model_class.human_attribute_name(:days) %></th>
-    </tr>
-  </thead>
-  <tbody>
-    
-  </tbody>
-</table>
-</div>
+  <div class="span2" "biz_logo">
+    <div class="pull-right">
+      <%= image_tag @biz.logo.url(:small)  if @biz.logo? %>
+    </div>
+  </div>
+  <div class="span12" "store_data">
+      <h4>Locations:</h4>
+      <hr></hr>
+    <table class="table">
+      <thead>
+        <tr>
+          <th><%= model_class.human_attribute_name(:street1) %></th>
+          <th><%= model_class.human_attribute_name(:street2) %></th>
+          <th><%= model_class.human_attribute_name(:city) %></th>
+          <th><%= model_class.human_attribute_name(:state) %></th>
+          <th><%= model_class.human_attribute_name(:zip_code) %></th>
+          <th><%= model_class.human_attribute_name(:phone) %></th>
+          <th><%= model_class.human_attribute_name(:contact_name) %></th>
+          <th><%= model_class.human_attribute_name(:hours) %></th>
+          <th><%= model_class.human_attribute_name(:days) %></th>
+        </tr>
+      </thead>
+    </div>  <!-- store_data  -->
+    <tbody>
+      <% @stores.each do |store| %>
+      <tr>
+        <td><%= store.street1 %></td>
+        <td><%= store.street2 %></td>
+        <td><%= store.city %></td>
+        <td><%= store.state %></td>
+        <td><%= store.zip_code %></td>
+        <td><%= store.phone_number %></td>
+        <td><%= store.contact_name %></td>
+        <td><%= store.hours %></td>
+        <td><%= store.days %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>  <!-- container  -->
 
 

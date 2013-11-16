@@ -5,9 +5,8 @@
 
 <div class="container">
   <div class="span12">
-    <div class="span4">
+    <div class="span4 pull-right">
       <%= image_tag @product.photo.url() if @product.photo? %>
-      
     </div>
     <div class="span6">
       <dl class="dl-horizontal">
@@ -18,31 +17,30 @@
         <dt><strong> Description: </strong></dt>
         <dd><%= @product.description %></dd><br>
         <dt><strong>Last Day: </strong></dt>
-        <dd><%= @product.end_date.strftime('%b-%e-%Y') %></dd>
+        <dd><%= @product.to_date.strftime('%b-%e-%Y') %></dd>
         <dt><strong>Time Left: </strong></dt>
-        <dd><%=" #{(@product.end_date.to_date - Date.today)} days" %></dd>
+        <dd><%=" #{(@product.to_date.to_date - Date.today)} days" %></dd>
       </dl>
     </div>
   </div>
 
   <div class="span12 store_info">
-    <div class="span4">
-      <%= image_tag @product.photo.url() if @product.photo? %>
-      
-        <address>
-        <strong><%= 'Store: '%></strong><br>
-        <%= @store.name %><br>
-        <%= @store.street1 %><br>
-        <%= @store.city %>
-        <%= @store.state %>
-        <%= @store.zip_code %>
-        <p></p>
-        <strong><%= 'Phone Number: ' %></strong>
-        <dd><%= @store.phone %></dd>
+    <div class="span2">
+      <%= image_tag @biz.logo.url(:small) if @biz.logo? %>
     </div>
     <div class="span6">
-      <%= image_tag "http://maps.googleapis.com/maps/api/staticmap?center=#{@store.latitude}%2C#{@store.longitude}&zoom=12&size=400x400&markers=color:blue%7Clabel:S%7C#{@store.latitude}%2C#{@store.longitude}&sensor=false" %>
-    </div>
-  </div>
-</div>
+        <strong><%= 'Store: '%></strong><br>
+        <%= @biz.name %><br>
+        <% @stores.each do |store| %>
+          <%= store.street1 %><br>
+          <%= store.city %>
+          <%= store.state %>
+          <%= store.zip_code %>
+          <p></p>
+          <strong><%= 'Phone Number: ' %></strong>
+          <dd><%= store.phone_number %></dd>
+        <% end %>
+    </div> <!-- span6  -->
+  </div>  <!-- span12 -->
+</div>   <!-- container  -->
 

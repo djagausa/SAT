@@ -1,4 +1,4 @@
-<%= simple_form_for ([@store, @product]), :html => {:multipart => true, :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for ([@biz, @product]), :html => {:multipart => true, :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
   <%= f.input :sale_price %>
@@ -20,7 +20,7 @@
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                store_products_path(@store), :class => 'btn' %>
+                biz_products_path(@biz), :class => 'btn' %>
   </div>
 	
 <% end %>

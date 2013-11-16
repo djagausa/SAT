@@ -10,7 +10,7 @@ class BizsController < ApplicationController
   # GET /bizs/1
   # GET /bizs/1.json
   def show
-
+    @stores = @biz.stores
   end
 
   # GET /bizs/new

@@ -17,4 +17,12 @@ class Shopper < ActiveRecord::Base
 
 	geocoded_by :zip_code
   	after_validation :geocode, :if => :zip_code_changed?
+
+  	# class method that checks whether the user's email and submitted_password are valid
+	  def self.authenticate(email, submitted_password)
+	  	user = find_by_email(email)
+
+	   	return nil if user.nil?
+	   	return user if user.authenticate(submitted_password)
+	  end
 end

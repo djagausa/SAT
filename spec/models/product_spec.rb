@@ -52,7 +52,7 @@ describe Product do
 	end
 
 	context "Associations" do
-		it { should respond_to(:store) }
+		it { should respond_to(:biz) }
 	end
 
 	context "Associations" do
