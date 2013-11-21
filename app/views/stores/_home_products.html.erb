@@ -7,8 +7,8 @@
             <% store.products.each do |product|%>
               <div class="thumbnail" style="height: 200px;">  
                 <div class="span4 thumb_pic">  
-                     <h5 class="product_name"><%= product.name %></h5>    
-                     <%= image_tag product.photo.url(:small) %>    
+                     <h5 class="product_name"><%= product.name %></h5>
+                     <%= image_tag product.photo.url(:small) if !product.photo_file_name.nil? %> 
                 </div>
                 <div class="thumb_data">
                   <div class="span6 thumb_prod_name">  
