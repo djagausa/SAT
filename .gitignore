@@ -19,6 +19,8 @@
 database.yml
 doc/
 *.swp
+/logos/*.*
+/photos/*.*
 *~
 .project
 .DS_Store
