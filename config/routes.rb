@@ -3,14 +3,14 @@ Sat::Application.routes.draw do
   ActiveAdmin.routes(self)
   root :to => "home#index"
 
-  get 'stores/geo'
-  post 'stores/geo'
-
   resources :sessions, only: [:new, :create, :destroy]
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
-  resources :home, only: [:index]
+  
+  post 'home/create'
+
+  resources :home, only: [:index, :create]
 
   resources :stores
   resources :shoppers

@@ -1,6 +1,8 @@
 class Product < ActiveRecord::Base
 	belongs_to :category
 	belongs_to :biz
+	has_many :stores, through: :biz
+
 	
 
 	validates :name, presence: true, uniqueness: true
@@ -13,6 +15,6 @@ class Product < ActiveRecord::Base
 	validates_attachment_size :photo, :less_than => 5.megabytes
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']
 
-	scope :not_expired, -> {where("to_date >= ?", Date.today()).includes(:biz).order(:to_date).all(:limit => 6)}
+	scope :not_expired, -> {where('products.to_date >= ?', Date.today()).includes(:biz).order(:to_date).all}
 
 end

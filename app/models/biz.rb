@@ -32,4 +32,5 @@ class Biz < ActiveRecord::Base
 	   	return nil if user.nil?
 	   	return user if user.authenticate(submitted_password)
 	end
+
 end

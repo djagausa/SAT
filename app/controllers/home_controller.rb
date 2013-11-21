@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
-   def index
-  	@products=Product.not_expired
-  end
+   	def index
+  		@stores=Store.products_not_expired
+  	end
 
+ 	def create
+ 		@stores=Store.get_products(params)
+ 	end
 end

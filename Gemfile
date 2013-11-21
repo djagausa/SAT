@@ -46,7 +46,8 @@ group :development, :test do
   gem 'guard-spork'
   gem "factory_girl_rails", "~> 4.2.1"
   gem 'childprocess', '0.3.6'
-  gem 'rails-footnotes', '>= 3.7.9'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
