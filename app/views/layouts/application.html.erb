@@ -4,11 +4,15 @@
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <title>Shop Around Town</title>
     <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
   
   <body>
-    <%= render :partial => 'head_nav' %>
+  
+  <%= head_paratial_selection (params)  %>
+
+      
     <div class="container master-container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
@@ -21,10 +25,7 @@
           <li><a href="#">Shop Around Town</a></li>
         </ul>
       </div>
-    <%= debug(params) if Rails.env.development? %>
-      
     </footer>
-    <%= javascript_include_tag "application" %>
   </body>
 </html>
 

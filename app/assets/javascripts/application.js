@@ -15,4 +15,6 @@
 //= require bootstrap
 //= require turbolinks
 //= require bootstrap-fileupload
+//= require underscore
+//= require gmaps/google
 //= require_tree .

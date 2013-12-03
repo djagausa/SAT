@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  before_filter :authorize_biz
   before_action :set_store, :only => [:index, :show, :edit, :update, :destroy]
   # GET /store
   def index
@@ -30,7 +31,7 @@ class StoresController < ApplicationController
   def create
     @store = Store.new(store_params)
     if @store.save
-      redirect_to @store, notice: 'Store was successfully created'
+      redirect_to @biz, notice: 'Store was successfully created'
     else
       render action: 'new'
     end
@@ -48,8 +49,8 @@ class StoresController < ApplicationController
   end
 
   def store_params
-    params.require(:store).permit(:street1, :street2, :city, :state, :zip_code,
-                                  :phone_number, :contact_name, :hour, :days)
+    params.require(:store).permit(:street1, :street2, :city, :state, :zip_code, 
+                                       :phone_number, :contact_name, :hours, :days, :latitude, :longitude, :biz_id)
   end
 
 end

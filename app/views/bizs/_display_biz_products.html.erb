@@ -1,0 +1,35 @@
+ <div>
+    <% @products.in_groups_of(1, false) do |products| %>
+      <tr>
+        <ul class="thumbnails" > 
+          <% products.each do |product| %>
+            <li class="span12"> 
+
+            <div class="thumbnail" style="height: 200px;">  
+
+              <div class="span2">
+                <% if !product.photo_file_name.nil? %>
+                  <%= image_tag product.photo.url(:small) %>
+                <% else %>
+                  <p>No Image Present</p>
+                <% end %>
+                <div class = "biz_product_btn">
+                  <%= link_to "Edit", edit_product_path(product), class:'btn btn-primary' %>
+                  <%= link_to "Delete", product_path(product), method: :delete, class:'btn btn-danger', data: { confirm: "You Sure?" } %>
+                </div>
+              </div>
+              <div class="span9">
+                <p class="biz_product_desc">Product Name: <%= product.name %></p>
+                <p class="biz_product_desc">Product Description: <%= product.description %></p>
+                <p class="biz_product_desc">Sale Price: <%= number_to_currency(product.sale_price) %></p>
+                <p class="biz_product_desc">Sales Starts: <%= product.from_date.strftime('%b-%e-%Y') %></p>
+                <p class="biz_product_desc">Sales Ends: <%= product.to_date.strftime('%b-%e-%Y') %></p>
+                <P class="biz_product_desc">Remaining Days: <%=" #{(product.to_date.to_date - Date.today)} days" %></p>
+              </div>
+            </li>  
+          <% end %>
+        </div>
+        </ul>
+       </tr>
+    <% end %>
+  </div>

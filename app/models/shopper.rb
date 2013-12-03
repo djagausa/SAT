@@ -15,8 +15,7 @@ class Shopper < ActiveRecord::Base
 
  	scope :by_email, ->(email) {where("email == ?", email)}
 
-	geocoded_by :zip_code
-  	after_validation :geocode, :if => :zip_code_changed?
+	acts_as_mappable :auto_geocode => {:field=>:zip_code}
 
   	# class method that checks whether the user's email and submitted_password are valid
 	  def self.authenticate(email, submitted_password)

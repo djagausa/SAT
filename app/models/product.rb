@@ -17,4 +17,6 @@ class Product < ActiveRecord::Base
 
 	scope :not_expired, -> {where('products.to_date >= ?', Date.today()).includes(:biz).order(:to_date).all}
 
+	scope :by_biz_id, -> (id) {where('biz_id = ?', id)}
+
 end

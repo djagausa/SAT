@@ -11,7 +11,10 @@ class ShoppersController < ApplicationController
   # GET /shoppers/1.json
   def show
     @products=Product.all
-    @categories=Category.all
+    @categories=Categorization.find(@shopper)
+    search_criteria = {"home" => {"zip_code"=>"#{@shopper.zip_code}"}}
+    logger.debug("************************************ show search criteria #{search_criteria}")
+    @stores=Store.get_products(search_criteria)
   end
 
   # GET /shoppers/new
@@ -73,6 +76,6 @@ class ShoppersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shopper_params
-      params.require(:shopper).permit(:email, :zip_code, :area, :home_page, :password, :password_confirmation, :latitude, :longitude)
+      params.require(:shopper).permit(:email, :zip_code, :distance, :home_page, :password, :password_confirmation, :latitude, :longitude)
     end
 end

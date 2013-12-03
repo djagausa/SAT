@@ -11,6 +11,7 @@ class BizsController < ApplicationController
   # GET /bizs/1.json
   def show
     @stores = @biz.stores
+    @products = Product.by_biz_id(@biz)
   end
 
   # GET /bizs/new
@@ -74,6 +75,6 @@ class BizsController < ApplicationController
     def biz_params
       params.require(:biz).permit(:name, :email, :website, :logo, :password, :password_confirmation,
                     stores_attributes:[:id, :street1, :street2, :city, :state, :zip_code, 
-                                       :phone_number, :contact_name, :hours, :days, :latitude, :longitude, :biz_id])
+                                       :phone_number, :contact_name, :hours, :days, :lat, :lng, :biz_id])
     end
 end

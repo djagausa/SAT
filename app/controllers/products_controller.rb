@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :authorize_biz, only: [:new, :create, :destroy, :edit, :update]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -12,9 +13,14 @@ class ProductsController < ApplicationController
 
   # GET /products/1
   def show
-    @categories=Category.all
     @biz = Biz.find(@product.biz_id)
     @stores = @biz.stores
+    @hash = Gmaps4rails.build_markers(@stores) do |store, marker|
+      marker.lat store.lat
+      marker.lng store.lng
+      # marker.infowindow 
+      # marker.json({ title: user.title })
+    end
   end
 
   # GET /products/new

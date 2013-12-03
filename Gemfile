@@ -38,7 +38,9 @@ end
 group :development, :test do
   gem 'hirb'
   # Use sqlite3 as the database for Active Record
-  gem 'sqlite3', '1.3.8'
+  # gem 'sqlite3', '1.3.8'
+  gem 'pg', '0.15.1'
+  
   gem 'rspec-rails'
   gem 'spork'
   gem 'spork-rails'
@@ -70,4 +72,8 @@ gem 'simple_form', '~> 3.0.0'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem "twitter-bootstrap-rails"
 gem 'paperclip'
-gem 'geocoder'
+gem 'geokit'
+gem 'geokit-rails'
+gem 'google-v3-geocoder'
+gem 'gmaps4rails'
+

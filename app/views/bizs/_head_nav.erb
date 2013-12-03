@@ -3,9 +3,10 @@
       <div class="container">
         <a class="brand" href="#">Shop Around Town</a>
         <ul class="nav">
-          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Home", biz_path(@biz) %></li>
           <li><%= link_to "New Store", new_biz_store_path(@biz) %></li>
           <li><%= link_to "New Product", new_biz_product_path(@biz) %></li>
+          <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
         </ul>
       </div>
     </div>
