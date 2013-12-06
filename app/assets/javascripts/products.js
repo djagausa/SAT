@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+
+
+function buildMap (markers) {
+	handler = Gmaps.build('Google');
+	handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+	  markers = handler.addMarkers(markers);
+	  handler.bounds.extendWith(markers);
+	  handler.fitMapToBounds();
+	  handler.getMap().setZoom(11);
+	});
+}
