@@ -13,6 +13,7 @@ describe Store do
 	it { should respond_to(:street2) }
 	it { should respond_to(:city) }
 	it { should respond_to(:state) }
+	it { should respond_to(:zip_code) }
 	it { should respond_to(:phone_number) }
 	it { should respond_to(:contact_name) }
 	it { should respond_to(:hours) }

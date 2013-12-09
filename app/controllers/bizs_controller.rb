@@ -1,4 +1,5 @@
 class BizsController < ApplicationController
+  before_filter :authorize_biz, only: [:new, :create, :destroy, :edit, :update]
   before_action :set_biz, only: [:show, :edit, :update, :destroy]
 
   # GET /bizs

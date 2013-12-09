@@ -4,13 +4,13 @@ describe ProductsController do
 
   describe 'GET #index' do
     context 'with params[:id]' do
+
       before :each do
-        @category = create(:category)
-        @product = create(:product, category: @category)
-        get :index, category_id: @category
+        @product = create(:product)
+        get :index, id: @product
       end
       it "populate product" do
-        expect(assigns(:product)).to eq [@product]
+        expect(assigns(:product)).to eq @product
       end
       it "renders the :index view" do
         expect(response).to render_template :index
@@ -33,8 +33,9 @@ describe ProductsController do
 
   describe 'GET #new' do
     before  :each do
-      @category = create(:category)
-      get :new, category_id: @category
+      session[:type] = SAT_BIZ_TYPE
+      @biz = create(:biz)
+      get :new, biz_id: @biz
     end
     it "create a new product" do
       expect(assigns(:product)).to be_kind_of(Product)
@@ -46,6 +47,7 @@ describe ProductsController do
 
   describe 'GET #edit' do
     before :each do
+      session[:type] = SAT_BIZ_TYPE
       @product = create(:product)
       get :edit, id: @product
     end
@@ -60,15 +62,16 @@ describe ProductsController do
   describe 'POST #create' do
     context "with valid attributes" do
       before :each do
-        @category = create(:category)
+      	session[:type] = SAT_BIZ_TYPE
+        @biz = create(:biz)
       end
       it "saves the new contact in the database" do
         expect{
-          post :create, category_id: @category, product: attributes_for(:product)
+          post :create, biz_id: @biz, product: attributes_for(:product)
         }.to change(Product, :count).by(1)
       end
       it "redirects to product#show" do
-        post :create, category_id: @category, product: attributes_for(:product)
+        post :create, biz_id: @biz, product: attributes_for(:product)
         expect(response).to redirect_to product_path(assigns[:product])
       end
     end
@@ -85,6 +88,7 @@ describe ProductsController do
 
   describe 'PUT/PATCH #update' do
     before :each do
+      session[:type] = SAT_BIZ_TYPE
       @product = create(:product)
     end
     context "with valid attributes" do
@@ -101,6 +105,7 @@ describe ProductsController do
     
   describe 'DELETE #destroy' do
     before :each do
+      session[:type] = SAT_BIZ_TYPE
       @product = create(:product)
     end
     it "deletes the product from the database" do

@@ -50,10 +50,10 @@ group :development, :test do
   gem 'childprocess', '0.3.6'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem "faker", "~> 1.2.0"
 end
 
 group :test do
-  gem "faker", "~> 1.2.0"
   gem "capybara", "~> 2.1.0"
   gem "database_cleaner", "~> 1.0.1"
   gem "launchy", "~> 2.3.0"

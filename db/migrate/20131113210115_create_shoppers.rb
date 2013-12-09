@@ -5,8 +5,8 @@ class CreateShoppers < ActiveRecord::Migration
       t.string :password_digest
       t.boolean :home_page
       t.string :zip_code
-      t.float :longitude
-      t.float :latitude
+      t.float :lng
+      t.float :lat
       t.integer :distance
 
       t.timestamps

@@ -9,6 +9,7 @@ require 'spec_helper'
 	it "should have valid factory" do
 		expect(build(:shopper)).to be_valid
 	end
+
 	it { should respond_to(:email) }
 	it { should respond_to(:password_digest) }
 	it { should respond_to(:password) }
@@ -43,7 +44,7 @@ require 'spec_helper'
 	end
 
 	context "when an email format is valid" do
-		it "should be invalid" do
+		it "should be valid" do
 			addresses = %w[shopper@test.COM A_TEST-GA@U.G.b.org test.1st@test.foo a+b@test.cn]
 			addresses.each do |valid_address|
 				@shopper.email = valid_address

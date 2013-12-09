@@ -5,6 +5,7 @@ describe CategoriesController do
   describe 'GET #index' do
     context 'with params[:id]' do
       before :each do
+      	controller.class.skip_before_filter :authorize_admin
         @cat = create(:category)
         get :index, id: @cat
       end

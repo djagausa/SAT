@@ -1,5 +1,4 @@
 class CreateStores < ActiveRecord::Migration
-  drop_table :stores
   def change
     create_table :stores do |t|
       t.string :street1
@@ -12,8 +11,8 @@ class CreateStores < ActiveRecord::Migration
       t.string :hours
       t.string :days
       t.integer :biz_id
-      t.float :longitude
-      t.float :latitude
+      t.float :lng
+      t.float :lat
 
       t.timestamps
     end

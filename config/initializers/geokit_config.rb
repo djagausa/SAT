@@ -29,7 +29,7 @@ if defined? Geokit
 	# See http://www.google.com/apis/maps/signup.html
 	# and http://www.google.com/apis/maps/documentation/#Geocoding_Examples
 #	Geokit::Geocoders::google = 'REPLACE_WITH_YOUR_GOOGLE_KEY'
-	Geokit::Geocoders::Google3Geocoder = Geokit::Geocoders::GoogleGeocoder3
+#	Geokit::Geocoders::Google3Geocoder = Geokit::Geocoders::GoogleGeocoder3
  
 	# This is your username and password for geocoder.us.
 	# To use the free service, the value can be set to nil or false.  For 

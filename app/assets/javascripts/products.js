@@ -1,6 +1,6 @@
+var buildMap;
 
-
-function buildMap (markers) {
+buildMap = function (markers) {
 	handler = Gmaps.build('Google');
 	handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 	  markers = handler.addMarkers(markers);
@@ -9,3 +9,4 @@ function buildMap (markers) {
 	  handler.getMap().setZoom(11);
 	});
 }
+

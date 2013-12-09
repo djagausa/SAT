@@ -31,7 +31,7 @@ class StoresController < ApplicationController
   def create
     @store = Store.new(store_params)
     if @store.save
-      redirect_to @biz, notice: 'Store was successfully created'
+      redirect_to @store, notice: 'Store was successfully created'
     else
       render action: 'new'
     end
@@ -50,7 +50,7 @@ class StoresController < ApplicationController
 
   def store_params
     params.require(:store).permit(:street1, :street2, :city, :state, :zip_code, 
-                                       :phone_number, :contact_name, :hours, :days, :latitude, :longitude, :biz_id)
+                                       :phone_number, :contact_name, :hours, :days, :lat, :lng, :biz_id)
   end
 
 end

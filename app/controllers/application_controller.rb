@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   	end
   end
 
-  helper_method :biz?
+  helper_method :authorize_biz, :authorize_admin, :authorize_shopper
 
   protected
   def biz?

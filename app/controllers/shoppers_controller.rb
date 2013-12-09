@@ -10,11 +10,6 @@ class ShoppersController < ApplicationController
   # GET /shoppers/1
   # GET /shoppers/1.json
   def show
-    @products=Product.all
-    @categories=Categorization.find(@shopper)
-    search_criteria = {"home" => {"zip_code"=>"#{@shopper.zip_code}"}}
-    logger.debug("************************************ show search criteria #{search_criteria}")
-    @stores=Store.get_products(search_criteria)
   end
 
   # GET /shoppers/new

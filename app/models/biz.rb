@@ -21,7 +21,7 @@ class Biz < ActiveRecord::Base
  	has_secure_password
  	validates :password, length: { minimum: 6 }
 
- 	scope :by_email, ->(email) {where("email == ?", email)}
+ 	scope :by_email, ->(email) {where("email = ?", email)}
 
  	accepts_nested_attributes_for :stores
 

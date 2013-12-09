@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :authorize_biz, only: [:new, :create, :destroy, :edit, :update]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :index]
 
   # GET /products
   def index
@@ -38,9 +38,7 @@ class ProductsController < ApplicationController
   def create
     @biz = Biz.find(params[:biz_id])
     @product = @biz.products.new(product_params)
-    # @product.store_id = params[:store_id]
     if @product.save
-      # render text: params
       redirect_to @product, notice: 'Product was successfully created.'
     else
       render action: 'new'

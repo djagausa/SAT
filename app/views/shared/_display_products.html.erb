@@ -1,3 +1,4 @@
+<% if @stores != [] %>
   <div>
     <% @stores.each do |store| %>
       <% store.products.in_groups_of(1, false) do |products| %>
@@ -32,4 +33,5 @@
       <% end %> <!-- prducts  -->
     <% end %>  <!-- stores   -->
   </div>
+  <% end %>
 

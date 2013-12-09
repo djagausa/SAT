@@ -13,7 +13,7 @@ class Shopper < ActiveRecord::Base
  	has_secure_password
  	validates :password, length: { minimum: 6 }
 
- 	scope :by_email, ->(email) {where("email == ?", email)}
+ 	scope :by_email, ->(email) {where("email = ?", email)}
 
 	acts_as_mappable :auto_geocode => {:field=>:zip_code}
 
@@ -25,3 +25,4 @@ class Shopper < ActiveRecord::Base
 	   	return user if user.authenticate(submitted_password)
 	  end
 end
+

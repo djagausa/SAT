@@ -3,6 +3,10 @@ require 'spec_helper'
 describe StoresController do
 
   describe 'GET #index' do
+
+  	before :each do
+  		session[:type] = SAT_BIZ_TYPE
+  	end
     context 'with params[:id]' do
       before :each do
         @store = create(:store)
@@ -18,9 +22,10 @@ describe StoresController do
   end
 
   describe 'GET #show' do
-    before :each do
-      @store = create(:store)
-      get :show, id: @store
+  	before :each do
+  		session[:type] = SAT_BIZ_TYPE
+        @store = create(:store)
+        get :show, id: @store
     end
     it "assigns the requested store to @store" do
       expect(assigns(:store)).to eq @store
@@ -31,8 +36,9 @@ describe StoresController do
   end
 
   describe 'GET #new' do
-    before  :each do
-      get :new
+  	before :each do
+  		session[:type] = SAT_BIZ_TYPE
+        get :new
     end
     it "create a new store" do
       expect(assigns(:store)).to be_kind_of(Store)
@@ -43,9 +49,10 @@ describe StoresController do
   end
 
   describe 'GET #edit' do
-    before :each do
-      @store = create(:store)
-      get :edit, id: @store
+  	before :each do
+  		session[:type] = SAT_BIZ_TYPE
+        @store = create(:store)
+        get :edit, id: @store
     end
     it "assigns the requested store to @store" do
       expect(assigns(:store)).to eq @store
@@ -56,14 +63,18 @@ describe StoresController do
   end
   
   describe 'POST #create' do
+  	before :each do
+  		session[:type] = SAT_BIZ_TYPE
+  	end
     context "with valid attributes" do
-      it "saves the new contact in the database" do
+      it "saves the new store in the database" do
+      	biz = create(:biz)
         expect{
-          post :create, store: attributes_for(:store)
+          post :create, :biz_id =>1, store: attributes_for(:store )
         }.to change(Store, :count).by(1)
       end
       it "redirects to store#show" do
-        post :create, store: attributes_for(:store)
+        post :create, :biz_id =>1, store: attributes_for(:store )
         expect(response).to redirect_to store_path(assigns[:store])
       end
     end
@@ -79,8 +90,9 @@ describe StoresController do
   end
 
   describe 'PUT/PATCH #update' do
-    before :each do
-      @store = create(:store)
+  	before :each do
+  		session[:type] = SAT_BIZ_TYPE
+        @store = create(:store)
     end
     context "with valid attributes" do
       it "locates the request @store" do
@@ -96,7 +108,8 @@ describe StoresController do
     
   describe 'DELETE #destroy' do
     before :each do
-      @store = create(:store)
+  		session[:type] = SAT_BIZ_TYPE
+        @store = create(:store)
     end
     it "deletes the store from the database" do
       expect{
