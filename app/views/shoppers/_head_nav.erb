@@ -5,6 +5,7 @@
         <ul class="nav">
           <li><%= link_to "Home", shopper_path(@shopper) %></li>
           <li><%= link_to "Edit Registration Data", edit_shopper_path(@shopper) %></li>
+          <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
           </ul>
       </div>
     </div>

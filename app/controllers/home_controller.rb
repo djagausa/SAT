@@ -4,6 +4,6 @@ class HomeController < ApplicationController
   	end
 
  	def create
- 		@stores=Store.get_products(params)
+ 		@stores=Store.get_products("category_ids" => params[:home][:category_ids][0...-1],"zip_code" => params[:home][:zip_code],"distance" => params[:home][:distance])
  	end
 end

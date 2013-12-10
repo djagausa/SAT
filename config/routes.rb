@@ -7,7 +7,8 @@ Sat::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
-  
+  post 'shoppers/search'
+
   post 'home/create'
 
   resources :home, only: [:index, :create]

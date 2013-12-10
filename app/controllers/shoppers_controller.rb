@@ -1,15 +1,17 @@
 class ShoppersController < ApplicationController
-  before_action :set_shopper, only: [:show, :edit, :update, :destroy]
+  before_action :set_shopper, only: [:show, :edit, :update, :destroy, :index]
 
   # GET /shoppers
   # GET /shoppers.json
   def index
-    @shoppers = Shopper.all
   end
 
   # GET /shoppers/1
   # GET /shoppers/1.json
   def show
+    @stores=Store.get_products("category_ids" => @shopper.categories.pluck(:id),"zip_code" => @shopper.zip_code,"distance" => @shopper.distance)
+
+    render action: 'index'
   end
 
   # GET /shoppers/new
@@ -63,6 +65,13 @@ class ShoppersController < ApplicationController
     end
   end
 
+  def search
+    @stores=Store.get_products( "category_ids" => params[:shopper][:category_ids][0...-1],
+                                "zip_code" => params[:shopper][:zip_code],
+                                "distance" => params[:shopper][:distance])
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_shopper
@@ -71,6 +80,6 @@ class ShoppersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shopper_params
-      params.require(:shopper).permit(:email, :zip_code, :distance, :home_page, :password, :password_confirmation, :latitude, :longitude)
+      params.require(:shopper).permit(:email, :zip_code, :distance, :home_page, :password, :password_confirmation, :lat, :lng)
     end
 end
