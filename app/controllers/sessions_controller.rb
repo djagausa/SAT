@@ -4,10 +4,10 @@ class SessionsController < ApplicationController
 
   def create
     session[:type] = SAT_SHOPPER_TYPE
-  	user = Shopper.authenticate(params[:session][:email], params[:session][:password])
+  	user = Shopper.authenticate(params[:email], params[:password])
 
   	if user.nil?
-  		user = Biz.authenticate(params[:session][:email], params[:session][:password])
+  		user = Biz.authenticate(params[:email], params[:password])
       session[:type] = SAT_BIZ_TYPE
   	end
 

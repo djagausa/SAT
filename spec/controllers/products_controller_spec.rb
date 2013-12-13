@@ -3,14 +3,14 @@ require 'spec_helper'
 describe ProductsController do
 
   describe 'GET #index' do
-    context 'with params[:id]' do
-
+    context 'populates an array of products' do
       before :each do
-        @product = create(:product)
-        get :index, id: @product
+        @product1 = create(:product)
+        @product2 = create(:product)
+        get :index
       end
       it "populate product" do
-        expect(assigns(:product)).to eq @product
+        expect(assigns(:products)).to match_array ([@product1, @product2])
       end
       it "renders the :index view" do
         expect(response).to render_template :index

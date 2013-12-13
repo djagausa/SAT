@@ -3,14 +3,15 @@ require 'spec_helper'
 describe CategoriesController do
 
   describe 'GET #index' do
-    context 'with params[:id]' do
+    context 'populates an array of categories' do
       before :each do
       	controller.class.skip_before_filter :authorize_admin
-        @cat = create(:category)
-        get :index, id: @cat
+        @cat1 = create(:category)
+        @cat2 = create(:category)
+        get :index
       end
       it "populate cat" do
-        expect(assigns(:category)).to eq @cat
+        expect(assigns(:categories)).to match_array ([@cat1, @cat2])
       end
       it "renders the :index view" do
         expect(response).to render_template :index

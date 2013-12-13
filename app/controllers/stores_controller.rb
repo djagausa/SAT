@@ -1,8 +1,9 @@
 class StoresController < ApplicationController
   before_filter :authorize_biz
-  before_action :set_store, :only => [:index, :show, :edit, :update, :destroy]
+  before_action :set_store, :only => [:show, :edit, :update, :destroy]
   # GET /store
   def index
+    @stores = Store.all
   end
 
   # GET /store /1  

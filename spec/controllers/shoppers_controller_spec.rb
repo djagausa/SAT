@@ -3,13 +3,14 @@ require 'spec_helper'
 describe ShoppersController do
 
   describe 'GET #index' do
-    context 'with params[:user_id]' do
+    context 'populates an array of shoppers' do
       before :each do
-          @shopper = create(:shopper)
-          get :index
+          @shopper1 = create(:shopper)
+          @shopper2 = create(:shopper)
+          get :index 
       end
       it "populate shopper" do
-        expect(assigns(:shoppers)).to eq [@shopper]
+        expect(assigns(:shoppers)).to match_array ([@shopper1, @shopper2])
       end
       it "renders the :index view" do
         expect(response).to render_template :index
@@ -27,8 +28,8 @@ describe ShoppersController do
       expect(assigns(:shopper)).to eq @shopper
     end
 
-    it "renders the show template" do
-      expect(response).to render_template :show
+    it "renders the index template" do
+      expect(response).to render_template :index
     end
   end
 

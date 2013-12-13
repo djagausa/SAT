@@ -3,13 +3,15 @@ require 'spec_helper'
 describe BizsController do
 
   describe 'GET #index' do
-    context 'with params[:user_id]' do
+    context 'populates an array of bizs' do
     	before :each do
-        @biz = create(:biz)
+        session[:type] = SAT_BIZ_TYPE
+        @biz1 = create(:biz)
+        @biz2 = create(:biz)
         get :index
     	end
       it "populate biz" do
-        expect(assigns(:bizs)).to eq [@biz]
+        expect(assigns(:bizs)).to match_array ([@biz1, @biz2])
       end
       it "renders the :index view" do
       	expect(response).to render_template :index
@@ -19,6 +21,7 @@ describe BizsController do
 
   describe 'GET #show' do
     before :each do
+      session[:type] = SAT_BIZ_TYPE
       @biz = create(:biz)
       get :show, id: @biz
     end

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_filter :authorize_biz, only: [:new, :create, :destroy, :edit, :update]
-  before_action :set_product, only: [:show, :edit, :update, :destroy, :index]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   def index

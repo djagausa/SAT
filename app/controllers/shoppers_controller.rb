@@ -1,9 +1,10 @@
 class ShoppersController < ApplicationController
-  before_action :set_shopper, only: [:show, :edit, :update, :destroy, :index]
+  before_action :set_shopper, only: [:show, :edit, :update, :destroy]
 
   # GET /shoppers
   # GET /shoppers.json
   def index
+    @shoppers = Shopper.all
   end
 
   # GET /shoppers/1

@@ -11,6 +11,6 @@ FactoryGirl.define do
         phone_number        { Faker::PhoneNumber.phone_number }
         contact_name        { Faker::Name.name }
         hours               "3-5"
-        days                "m-m"
+        days                "m-s"
     end
 end

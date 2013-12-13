@@ -1,9 +1,10 @@
 class CategoriesController < ApplicationController
   before_filter :authorize_admin
-  before_action :set_category, :only => [:index, :show, :edit, :update, :destroy]
+  before_action :set_category, :only => [:show, :edit, :update, :destroy]
 
   # GET /caterory
   def index
+    @categories=Category.all
   end
 
   # GET /cagtegory/1

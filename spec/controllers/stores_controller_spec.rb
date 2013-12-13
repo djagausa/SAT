@@ -3,17 +3,15 @@ require 'spec_helper'
 describe StoresController do
 
   describe 'GET #index' do
-
-  	before :each do
-  		session[:type] = SAT_BIZ_TYPE
-  	end
-    context 'with params[:id]' do
+    context 'populates an array of products' do
       before :each do
-        @store = create(:store)
-        get :index, id: @store
+        session[:type] = SAT_BIZ_TYPE
+        @store1 = create(:store)
+        @store2 = create(:store)
+        get :index
       end
       it "populate store" do
-        expect(assigns(:store)).to eq @store
+        expect(assigns(:stores)).to match_array ([@store1, @store2])
       end
       it "renders the :index view" do
         expect(response).to render_template :index
