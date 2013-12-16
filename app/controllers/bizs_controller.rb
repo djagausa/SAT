@@ -1,5 +1,5 @@
 class BizsController < ApplicationController
-  before_filter :authorize_biz, only: [:new, :create, :destroy, :edit, :update, :index, :show]
+  # before_filter :authorize_biz, only: [:create, :destroy, :edit, :update, :index, :show]
   before_action :set_biz, only: [:show, :edit, :update, :destroy]
 
   # GET /bizs
@@ -33,6 +33,8 @@ class BizsController < ApplicationController
 
     respond_to do |format|
       if @biz.save
+        session[:type] = SAT_BIZ_TYPE
+        session[:user_id] = @biz.id
         format.html { redirect_to @biz, notice: 'Biz was successfully created.' }
         format.json { render action: 'show', status: :created, location: @biz }
       else

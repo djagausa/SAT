@@ -31,6 +31,8 @@ class ShoppersController < ApplicationController
 
     respond_to do |format|
       if @shopper.save
+        session[:type] = SAT_SHOPPER_TYPE
+        session[:user_id] = @shopper.id
         product_cats = params[:shopper][:category_ids][0...-1]
         @shopper.categories = product_cats.map {|id| Category.find(id)}
         format.html { redirect_to @shopper, notice: 'Shopper was successfully created.' }

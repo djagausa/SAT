@@ -3,13 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    session[:type] = SAT_SHOPPER_TYPE
-  	user = Shopper.authenticate(params[:email], params[:password])
-
-  	if user.nil?
-  		user = Biz.authenticate(params[:email], params[:password])
-      session[:type] = SAT_BIZ_TYPE
-  	end
+  	user = User.authenticate(params[:email], params[:password])
 
   	if user.nil?
   		flash.now[:error] = "Invalid email/password combination."
@@ -17,7 +11,13 @@ class SessionsController < ApplicationController
   		redirect_to :root
   	else
       session[:user_id] = user.id
-  		redirect_to user
+      if user.as_user_type == "Biz"
+        session[:type] = SAT_BIZ_TYPE
+        redirect_to Biz.find_biz(user.as_user_id)
+      else
+        session[:type] = SAT_SHOPPER_TYPE
+        redirect_to Shopper.find_shopper(user.as_user_id)
+      end
   	end
   end
 

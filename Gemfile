@@ -30,6 +30,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'acts_as_relation', '~> 1.0'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -76,4 +77,6 @@ gem 'geokit'
 gem 'geokit-rails'
 gem 'google-v3-geocoder'
 gem 'gmaps4rails'
+
+
 

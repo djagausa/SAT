@@ -3,7 +3,7 @@
       <div class="container">
         <a class="brand" href="#">Shop Around Town</a>
         <ul class="nav">
-          <li><%= link_to "Home", shopper_path  %></li>     
+          <li><%= link_to "Home", shopper_path(session[:user_id])  %></li>     
           </li>
         </ul>
       </div>

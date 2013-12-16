@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206213856) do
+ActiveRecord::Schema.define(version: 20131216123038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,8 +60,6 @@ ActiveRecord::Schema.define(version: 20131206213856) do
     t.string   "name"
     t.string   "website"
     t.string   "logo_image"
-    t.string   "email"
-    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logo_file_name"
@@ -101,8 +99,6 @@ ActiveRecord::Schema.define(version: 20131206213856) do
   end
 
   create_table "shoppers", force: true do |t|
-    t.string   "email"
-    t.string   "password_digest"
     t.boolean  "home_page"
     t.string   "zip_code"
     t.float    "lng"
@@ -125,6 +121,15 @@ ActiveRecord::Schema.define(version: 20131206213856) do
     t.integer  "biz_id"
     t.float    "lng"
     t.float    "lat"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.integer  "as_user_id"
+    t.string   "as_user_type"
+    t.string   "email"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
