@@ -18,11 +18,16 @@ class Shopper < ActiveRecord::Base
 	acts_as_mappable :auto_geocode => {:field=>:zip_code}
 
   	# class method that checks whether the user's email and submitted_password are valid
-	  def self.authenticate(email, submitted_password)
+	def self.authenticate(email, submitted_password)
 	  	user = find_by_email(email)
 
 	   	return nil if user.nil?
 	   	return user if user.authenticate(submitted_password)
-	  end
+	end
+	def send_password_reset
+		UserMailer.password_reset(self).deliver
+	end
+
+
 end
 

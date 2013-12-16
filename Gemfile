@@ -46,15 +46,15 @@ group :development, :test do
   gem 'spork-rails'
   gem 'guard-rspec'
   gem 'guard-spork'
+  gem "capybara"
   gem "factory_girl_rails", "~> 4.2.1"
-  gem 'childprocess', '0.3.6'
+  # gem 'childprocess', '0.3.6'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem "faker", "~> 1.2.0"
 end
 
 group :test do
-  gem "capybara", "~> 2.1.0"
   gem "database_cleaner", "~> 1.0.1"
   gem "launchy", "~> 2.3.0"
   gem "selenium-webdriver", "~> 2.35.1"

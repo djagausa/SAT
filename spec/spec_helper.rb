@@ -1,5 +1,8 @@
 require 'rubygems'
 require 'spork'
+require 'capybara/rspec'
+require 'capybara/rails'
+
 #uncomment the following line to use spork with the debugger
 #require 'spork/ext/ruby-debug'
 
@@ -33,8 +36,12 @@ ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
     # Include Factory Girl syntax to simplify calls to factories 
     config.include FactoryGirl::Syntax::Methods
     
+    config.include Capybara::DSL
+    config.include(MailerMacros)
+    config.before(:each) { reset_email }
+    
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-    config.fixture_path = "#{::Rails.root}/spec/fixtures"
+    # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false

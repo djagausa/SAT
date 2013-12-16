@@ -1,4 +1,5 @@
 Sat::Application.routes.draw do
+  get "password_resets/new"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root :to => "home#index"
@@ -13,11 +14,11 @@ Sat::Application.routes.draw do
 
   resources :home, only: [:index, :create]
 
+  resources :password_resets
   resources :stores
   resources :shoppers
-
   resources :products
-  
+
   resources :categories, shallow: true  do
     resources :products
   end

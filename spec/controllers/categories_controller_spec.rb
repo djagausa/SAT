@@ -21,6 +21,7 @@ describe CategoriesController do
 
   describe 'GET #show' do
     before :each do
+      controller.class.skip_before_filter :authorize_admin
       @cat = create(:category)
       get :show, id: @cat
     end
@@ -36,6 +37,7 @@ describe CategoriesController do
 
   describe 'GET #new' do
     before  :each do
+      controller.class.skip_before_filter :authorize_admin
       get :new
     end
     it "create a new category" do
@@ -48,6 +50,7 @@ describe CategoriesController do
 
   describe 'GET #edit' do
     before :each do
+      controller.class.skip_before_filter :authorize_admin
       @category = create(:category)
       get :edit, id: @category
     end
@@ -61,6 +64,9 @@ describe CategoriesController do
   
   describe 'POST #create' do
     context "with valid attributes" do
+      before :each do
+        controller.class.skip_before_filter :authorize_admin
+      end
       it "saves the new contact in the database" do
         expect{
           post :create, category: attributes_for(:category)
@@ -84,6 +90,7 @@ describe CategoriesController do
 
   describe 'PUT/PATCH #update' do
     before :each do
+      controller.class.skip_before_filter :authorize_admin
       @category = create(:category)
     end
     context "with valid attributes" do
@@ -100,6 +107,7 @@ describe CategoriesController do
     
   describe 'DELETE #destroy' do
     before :each do
+      controller.class.skip_before_filter :authorize_admin
       @category = create(:category)
     end
     it "deletes the category from the database" do
