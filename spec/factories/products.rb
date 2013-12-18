@@ -9,7 +9,10 @@ FactoryGirl.define do
 		from_date			"2003-03-01"
 		to_date				"2004-04-04"
 		category
-		biz
-	end
+	 	biz
 
+		factory :invalid_product do
+			name 	""
+		end
+	end
 end

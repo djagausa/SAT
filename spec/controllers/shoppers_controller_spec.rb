@@ -60,7 +60,7 @@ describe ShoppersController do
   
   describe 'POST #create' do
     context "with valid attributes" do
-      xit "saves the new contact in the database" do
+      xit "saves the new shopper in the database" do
         expect{
           post :create, shopper: attributes_for(:shopper)
         }.to change(Shopper, :count).by(1)
@@ -106,6 +106,10 @@ describe ShoppersController do
         delete :destroy, id: @shopper
       }.to change(Shopper, :count).by(-1)
     end
-    it "redirects to "
+    it "redirects to the :index template" do
+      delete :destroy, id: @shopper
+      expect(response).to redirect_to shoppers_url
+    end
+
   end
 end

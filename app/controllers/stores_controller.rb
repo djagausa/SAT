@@ -34,13 +34,14 @@ class StoresController < ApplicationController
     if @store.save
       redirect_to @store, notice: 'Store was successfully created'
     else
-      render action: 'new'
+      render action :new
     end
   end  
 
   # DELETE /store/1
   def destroy
     @store.destroy
+    redirect_to @store, notice: 'Store was successfully deleted'
   end
 
   private

@@ -49,7 +49,7 @@ group :development, :test do
   gem 'guard-spork'
   gem "capybara"
   gem "factory_girl_rails", "~> 4.2.1"
-  # gem 'childprocess', '0.3.6'
+  gem 'childprocess'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem "faker", "~> 1.2.0"

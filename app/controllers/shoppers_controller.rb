@@ -1,5 +1,7 @@
 class ShoppersController < ApplicationController
   before_action :set_shopper, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_shopper
+  before_action :correct_shopper, only: [:edit, :update, :destroy]
 
   # GET /shoppers
   # GET /shoppers.json
@@ -83,6 +85,10 @@ class ShoppersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shopper_params
-      params.require(:shopper).permit(:email, :zip_code, :distance, :home_page, :password, :password_confirmation, :lat, :lng)
+      params.require(:shopper).permit(:email, :zip_code, :distance, :home_page, :lat, :lng, :password, :password_confirmation)
+    end
+
+    def correct_shopper
+      redirect_to(root_url) unless current_user?(User.find_user(params[:id], 'Shopper'))
     end
 end

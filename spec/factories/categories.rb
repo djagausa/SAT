@@ -4,5 +4,4 @@
 	factory :category do
 		sequence(:name)  { |n| "cat#{n}" }
 	end
-
 end

@@ -1,6 +1,7 @@
 class BizsController < ApplicationController
-  # before_filter :authorize_biz, only: [:create, :destroy, :edit, :update, :index, :show]
+  before_action :authorize_biz, only: [:create, :destroy, :edit, :update, :index, :show]
   before_action :set_biz, only: [:show, :edit, :update, :destroy]
+  before_action :current_biz, only: [:create, :destroy, :edit, :update, :index, :show]
 
   # GET /bizs
   # GET /bizs.json
@@ -79,5 +80,9 @@ class BizsController < ApplicationController
       params.require(:biz).permit(:name, :email, :website, :logo, :password, :password_confirmation,
                     stores_attributes:[:id, :street1, :street2, :city, :state, :zip_code, 
                                        :phone_number, :contact_name, :hours, :days, :lat, :lng, :biz_id])
+    end
+
+    def current_biz
+      redirect_to(root_url) unless current_user?(User.find_user(params[:id], 'Biz'))
     end
 end

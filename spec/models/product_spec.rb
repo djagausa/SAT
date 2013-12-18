@@ -21,7 +21,7 @@ describe Product do
 
 	context "when name is not present" do
 		before { @product.name = " " }
-		it { should_not be_valid}
+		it { should_not be_valid }
 	end
 
 	context "name must be unique" do

@@ -65,7 +65,7 @@ describe ProductsController do
       	session[:type] = SAT_BIZ_TYPE
         @biz = create(:biz)
       end
-      it "saves the new contact in the database" do
+      it "saves the new product in the database" do
         expect{
           post :create, biz_id: @biz, product: attributes_for(:product)
         }.to change(Product, :count).by(1)
@@ -77,12 +77,19 @@ describe ProductsController do
     end
 
     context "with invalid attributes" do
-      xit "does not save the new product in the database" do
+      before :each do
+        session[:type] = SAT_BIZ_TYPE
+        @biz = create(:biz)
+      end
+      it "does not save the new product in the database" do
         expect{
-          post :create, product: attributes_for(:invalid_product)
+          post :create, biz_id: @biz, product: attributes_for(:invalid_product)
         }.to_not change(Product, :count)
       end
-      xit "re-renders the :new template"
+      it "redirects to product#new" do
+        post :create, biz_id: @biz, product: attributes_for(:invalid_product)
+        expect(response).to render_template :new
+      end
     end
   end
 
@@ -113,7 +120,10 @@ describe ProductsController do
         delete :destroy, id: @product
       }.to change(Product, :count).by(-1)
     end
-    xit "redirects to "
+    it "redirects to the :index template" do
+      delete :destroy, id: @product
+      expect(response).to redirect_to products_url
+    end
   end
 end
 

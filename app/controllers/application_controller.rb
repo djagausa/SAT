@@ -4,14 +4,14 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-  	if session[:type] == SAT_SHOPPER_TYPE
-  		@current_user ||= Shopper.find(session[:user_id])
-  	else
-  		@current_user ||= Biz.find(session[:user_id])
-  	end
+    @current_user ||= User.find_by_auth_token!(cookies[:auth_token]) if cookies[:auth_token]
   end
 
-  helper_method :authorize_biz, :authorize_admin, :authorize_shopper
+  def current_user? (user)
+    user == current_user
+  end
+
+  helper_method :authorize_biz, :authorize_admin, :authorize_shopper, :current_user
 
   protected
   def biz?

@@ -10,7 +10,13 @@ class SessionsController < ApplicationController
       session[:type] = nil
   		redirect_to :root
   	else
+      session[:as_user_id] = user.as_user_id
       session[:user_id] = user.id
+      if params[:remember_me]
+        cookies.permanent[:auth_token] = user.auth_token
+      else
+        cookies[:auth_token] = user.auth_token
+      end
       if user.as_user_type == "Biz"
         session[:type] = SAT_BIZ_TYPE
         redirect_to Biz.find_biz(user.as_user_id)
@@ -24,6 +30,7 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     session[:type] = nil
+    cookies.delete(:auth_token)
     redirect_to :root
   end
 end

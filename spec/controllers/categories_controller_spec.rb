@@ -67,7 +67,7 @@ describe CategoriesController do
       before :each do
         controller.class.skip_before_filter :authorize_admin
       end
-      it "saves the new contact in the database" do
+      it "saves the new category in the database" do
         expect{
           post :create, category: attributes_for(:category)
         }.to change(Category, :count).by(1)
@@ -76,15 +76,6 @@ describe CategoriesController do
         post :create, category: attributes_for(:category)
         expect(response).to redirect_to category_path(assigns[:category])
       end
-    end
-
-    context "with invalid attributes" do
-      xit "does not save the new category in the database" do
-        expect{
-          post :create, category: attributes_for(:invalid_category)
-        }.to_not change(Category, :count)
-      end
-      xit "re-renders the :new template"
     end
   end
 
@@ -115,6 +106,9 @@ describe CategoriesController do
         delete :destroy, id: @category
       }.to change(Category, :count).by(-1)
     end
-    it "redirects to "
+    it "redirects to the :index template" do
+      delete :destroy, id: @category
+      expect(response).to redirect_to categories_url
+    end
   end
 end

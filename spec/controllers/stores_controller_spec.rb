@@ -61,10 +61,11 @@ describe StoresController do
   end
   
   describe 'POST #create' do
-  	before :each do
-  		session[:type] = SAT_BIZ_TYPE
-  	end
+  	
     context "with valid attributes" do
+      before :each do
+      session[:type] = SAT_BIZ_TYPE
+    end
       it "saves the new store in the database" do
       	biz = create(:biz)
         expect{
@@ -78,12 +79,15 @@ describe StoresController do
     end
 
     context "with invalid attributes" do
-      xit "does not save the new store in the database" do
+      it "does not save the new store in the database" do
         expect{
           post :create, store: attributes_for(:invalid_store)
         }.to_not change(Store, :count)
       end
-      xit "re-renders the :new template"
+      xit "renders the :new template" do
+          post :create, store: attributes_for(:invalid_store)
+          expect(response).to render_template :new
+      end
     end
   end
 
@@ -114,7 +118,10 @@ describe StoresController do
         delete :destroy, id: @store
       }.to change(Store, :count).by(-1)
     end
-    it "redirects to "
+    it "redirects to the :index template" do
+      delete :destroy, id: @store
+      expect(response).to redirect_to stores_url
+    end
   end
 end
 

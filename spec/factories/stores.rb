@@ -12,5 +12,9 @@ FactoryGirl.define do
         contact_name        { Faker::Name.name }
         hours               "3-5"
         days                "m-s"
+
+        factory :invalid_store do
+            zip_code ""
+        end
     end
 end
