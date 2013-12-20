@@ -2,22 +2,6 @@ require 'spec_helper'
 
 describe ProductsController do
 
-  describe 'GET #index' do
-    context 'populates an array of products' do
-      before :each do
-        @product1 = create(:product)
-        @product2 = create(:product)
-        get :index
-      end
-      it "populate product" do
-        expect(assigns(:products)).to match_array ([@product1, @product2])
-      end
-      it "renders the :index view" do
-        expect(response).to render_template :index
-      end
-    end
-  end
-
   describe 'GET #show' do
     before :each do
       @product = create(:product)
@@ -33,6 +17,8 @@ describe ProductsController do
 
   describe 'GET #new' do
     before  :each do
+      controller.class.skip_before_filter :authorize_biz
+      controller.class.skip_before_filter :current_biz
       session[:type] = SAT_BIZ_TYPE
       @biz = create(:biz)
       get :new, biz_id: @biz
@@ -47,6 +33,8 @@ describe ProductsController do
 
   describe 'GET #edit' do
     before :each do
+      controller.class.skip_before_filter :authorize_biz
+      controller.class.skip_before_filter :current_biz
       session[:type] = SAT_BIZ_TYPE
       @product = create(:product)
       get :edit, id: @product
@@ -112,17 +100,20 @@ describe ProductsController do
     
   describe 'DELETE #destroy' do
     before :each do
+      controller.class.skip_before_filter :authorize_biz
+      controller.class.skip_before_filter :current_biz
       session[:type] = SAT_BIZ_TYPE
       @product = create(:product)
+      @biz = create(:biz)
     end
     it "deletes the product from the database" do
       expect{
         delete :destroy, id: @product
       }.to change(Product, :count).by(-1)
     end
-    it "redirects to the :index template" do
+    xit "redirects to the :biz template" do
       delete :destroy, id: @product
-      expect(response).to redirect_to products_url
+      expect(response).to redirect_to biz_url
     end
   end
 end

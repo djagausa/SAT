@@ -1,15 +1,11 @@
 class ProductsController < ApplicationController
-  before_filter :authorize_biz, only: [:new, :create, :destroy, :edit, :update]
+  before_action :authorize_biz, only: [:new, :create, :destroy, :edit, :update]
+  before_action :current_biz, only: [:new, :create, :destroy, :edit, :update]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
   def index
-     respond_to do |format|
-        format.html { @products = Product.all }
-        format.js { @products = Category.find(params[:category_id]).products.includes(:biz).includes(:store)}
-      end
   end
-
 
   # GET /products/1
   def show
@@ -70,5 +66,9 @@ class ProductsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def product_params
       params.require(:product).permit(:sale_price, :name, :original_price, :from_date, :to_date, :category_id, :description, :photo, :biz_id)
+    end
+
+    def current_biz
+      redirect_to(root_url) unless current_user?(User.find_user(session[:as_user_id], 'Biz'))
     end
 end

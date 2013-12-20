@@ -14,7 +14,7 @@ FactoryGirl.define do
         days                "m-s"
 
         factory :invalid_store do
-            zip_code ""
+            zip_code ''
         end
     end
 end

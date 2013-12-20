@@ -5,6 +5,7 @@ describe BizsController do
   describe 'GET #index' do
     context 'populates an array of bizs' do
     	before :each do
+        controller.class.skip_before_filter :current_biz
         session[:type] = SAT_BIZ_TYPE
         @biz1 = create(:biz)
         @biz2 = create(:biz)
@@ -21,6 +22,7 @@ describe BizsController do
 
   describe 'GET #show' do
     before :each do
+      controller.class.skip_before_filter :current_biz
       session[:type] = SAT_BIZ_TYPE
       @biz = create(:biz)
       get :show, id: @biz
@@ -50,6 +52,7 @@ describe BizsController do
 
   describe 'GET #edit' do
     before :each do
+      controller.class.skip_before_filter :current_biz
       session[:type] = SAT_BIZ_TYPE
       @biz = create(:biz)
       get :edit, id: @biz
@@ -109,6 +112,7 @@ describe BizsController do
     
   describe 'DELETE #destroy' do
     before :each do
+      controller.class.skip_before_filter :current_biz
       session[:type] = SAT_BIZ_TYPE
       @biz = create(:biz)
     end

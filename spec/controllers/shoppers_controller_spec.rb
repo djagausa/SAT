@@ -5,6 +5,8 @@ describe ShoppersController do
   describe 'GET #index' do
     context 'populates an array of shoppers' do
       before :each do
+          controller.class.skip_before_filter :authorize_shopper
+          controller.class.skip_before_filter :correct_shopper
           @shopper1 = create(:shopper)
           @shopper2 = create(:shopper)
           get :index 
@@ -20,6 +22,7 @@ describe ShoppersController do
 
   describe 'GET #show' do
     before :each do
+      controller.class.skip_before_filter :authorize_shopper
       @shopper = create(:shopper)
       get :show, id: @shopper
     end
@@ -35,6 +38,7 @@ describe ShoppersController do
 
   describe 'GET #new' do
     before  :each do
+      controller.class.skip_before_filter :authorize_shopper
       get :new
     end
     it "create a new shopper" do
@@ -47,6 +51,7 @@ describe ShoppersController do
 
   describe 'GET #edit' do
     before :each do
+      controller.class.skip_before_filter :authorize_shopper
       @shopper = create(:shopper)
       get :edit, id: @shopper
     end
@@ -83,6 +88,7 @@ describe ShoppersController do
 
   describe 'PUT/PATCH #update' do
     before :each do
+      controller.class.skip_before_filter :authorize_shopper
       @shopper = create(:shopper)
     end
     context "with valid attributes" do
@@ -99,6 +105,8 @@ describe ShoppersController do
     
   describe 'DELETE #destroy' do
     before :each do
+      controller.class.skip_before_filter :correct_shopper
+      controller.class.skip_before_filter :authorize_shopper
       @shopper = create(:shopper)
     end
     it "deletes the shopper from the database" do

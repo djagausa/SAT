@@ -1,7 +1,7 @@
 class BizsController < ApplicationController
-  before_action :authorize_biz, only: [:create, :destroy, :edit, :update, :index, :show]
+  before_action :authorize_biz, only: [:destroy, :edit, :update, :index, :show]
   before_action :set_biz, only: [:show, :edit, :update, :destroy]
-  before_action :current_biz, only: [:create, :destroy, :edit, :update, :index, :show]
+  before_action :current_biz, only: [:destroy, :edit, :update, :index, :show]
 
   # GET /bizs
   # GET /bizs.json
@@ -32,41 +32,30 @@ class BizsController < ApplicationController
   def create
     @biz = Biz.new(biz_params)
 
-    respond_to do |format|
-      if @biz.save
-        session[:type] = SAT_BIZ_TYPE
-        session[:user_id] = @biz.id
-        format.html { redirect_to @biz, notice: 'Biz was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @biz }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @biz.errors, status: :unprocessable_entity }
-      end
+    if @biz.save
+      user = User.authenticate(params[:biz][:email], params[:biz][:password])
+      sign_in(user)
+      redirect_to @biz, notice: 'Biz was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /bizs/1
   # PATCH/PUT /bizs/1.json
   def update
-    respond_to do |format|
       if @biz.update(biz_params)
-        format.html { redirect_to @biz, notice: 'Biz was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @biz, notice: 'Biz was successfully updated.'
       else
-        format.html { render action: 'edit' }
-        format.json { render json: @biz.errors, status: :unprocessable_entity }
+        render action: 'edit'
       end
-    end
   end
 
   # DELETE /bizs/1
   # DELETE /bizs/1.json
   def destroy
     @biz.destroy
-    respond_to do |format|
-      format.html { redirect_to bizs_url }
-      format.json { head :no_content }
-    end
+    redirect_to bizs_url
   end
 
   private

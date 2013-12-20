@@ -1,6 +1,9 @@
 class StoresController < ApplicationController
-  before_filter :authorize_biz
+  before_action :authorize_biz
   before_action :set_store, :only => [:show, :edit, :update, :destroy]
+  before_action :current_biz, only: [:destroy, :edit, :update]
+
+
   # GET /store
   def index
     @stores = Store.all
@@ -55,4 +58,7 @@ class StoresController < ApplicationController
                                        :phone_number, :contact_name, :hours, :days, :lat, :lng, :biz_id)
   end
 
+  def current_biz
+      redirect_to(root_url) unless current_user?(User.find_user(session[:as_user_id], 'Biz'))
+  end
 end

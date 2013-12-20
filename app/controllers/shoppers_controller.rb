@@ -1,7 +1,7 @@
 class ShoppersController < ApplicationController
   before_action :set_shopper, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_shopper
-  before_action :correct_shopper, only: [:edit, :update, :destroy]
+  before_action :authorize_shopper, only: [:edit, :update, :destroy, :show, :index]
+  before_action :correct_shopper, only: [:edit, :update, :destroy, :show, :index]
 
   # GET /shoppers
   # GET /shoppers.json
@@ -13,7 +13,6 @@ class ShoppersController < ApplicationController
   # GET /shoppers/1.json
   def show
     @stores=Store.get_products("category_ids" => @shopper.categories.pluck(:id),"zip_code" => @shopper.zip_code,"distance" => @shopper.distance)
-
     render action: 'index'
   end
 
@@ -30,33 +29,24 @@ class ShoppersController < ApplicationController
   # POST /shoppers.json
   def create
     @shopper = Shopper.new(shopper_params)
-
-    respond_to do |format|
-      if @shopper.save
-        session[:type] = SAT_SHOPPER_TYPE
-        session[:user_id] = @shopper.id
-        product_cats = params[:shopper][:category_ids][0...-1]
-        @shopper.categories = product_cats.map {|id| Category.find(id)}
-        format.html { redirect_to @shopper, notice: 'Shopper was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @shopper }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @shopper.errors, status: :unprocessable_entity }
-      end
+    if @shopper.save
+      user = User.authenticate(params[:shopper][:email], params[:shopper][:password])
+      sign_in(user)
+      product_cats = params[:shopper][:category_ids][0...-1]
+      @shopper.categories = product_cats.map {|id| Category.find(id)}
+      redirect_to @shopper, notice: 'Shopper was successfully created.'
+    else
+      render action: 'new'
     end
   end
 
   # PATCH/PUT /shoppers/1
   # PATCH/PUT /shoppers/1.json
   def update
-    respond_to do |format|
-      if @shopper.update(shopper_params)
-        format.html { redirect_to @shopper, notice: 'Shopper was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @shopper.errors, status: :unprocessable_entity }
-      end
+    if @shopper.update(shopper_params)
+      redirect_to @shopper, notice: 'Shopper was successfully updated.'
+    else
+      render action: 'edit'
     end
   end
 
@@ -64,10 +54,7 @@ class ShoppersController < ApplicationController
   # DELETE /shoppers/1.json
   def destroy
     @shopper.destroy
-    respond_to do |format|
-      format.html { redirect_to shoppers_url }
-      format.json { head :no_content }
-    end
+    redirect_to shoppers_url
   end
 
   def search
