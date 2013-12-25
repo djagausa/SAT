@@ -24,7 +24,6 @@ class BizsController < ApplicationController
 
   # GET /bizs/1/edit
   def edit
-    # @biz = Biz.find(current_user.biz)
   end
 
   # POST /bizs

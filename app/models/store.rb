@@ -6,20 +6,20 @@ class Store < ActiveRecord::Base
   	validates			:zip_code, presence: true
 
 	scope :select_by_zip_code, -> (zip_code) \
-		{Store.includes(:products,:biz).joins(:products => :biz). \
-					where('products.to_date >= ?', Date.today()). \
-					where(:stores => {:zip_code => zip_code}).uniq.order('products.to_date')}
+		{Store.all.includes(:products,:biz). \
+					where(:stores => {:zip_code => zip_code}). \
+					where('products.to_date >= ?', Date.today()).order('products.to_date').uniq}
 	
 	scope :select_by_zip_cat, -> (zip_code,cat) \
-		{Store.includes(:products,:biz).joins(:products => :biz). \
+		{Store.all.includes(:products,:biz). \
 					where('products.to_date >= ?', Date.today()). \
 					where(:stores => {:zip_code => zip_code}). \
-					where(:products => {:category_id => cat}).uniq.order('products.to_date')}
+					where(:products => {:category_id => cat}).order('products.to_date').uniq}
 
-	scope :products_not_expired, -> {Store.all.includes(:products, :biz).where('products.to_date >= ?', Date.today()).order('products.to_date')}
+	scope :products_not_expired, -> {Store.all.includes(:products, :biz).where('products.to_date >= ?', Date.today()).order('products.to_date').uniq}
 
 	scope :select_by_zip_distance, -> (zip, distance) \
-		{Store.within(distance, :origin=>zip).includes(:products, :biz).where('products.to_date >= ?', Date.today()).order('products.to_date')}
+		{Store.within(distance, :origin=>zip).includes(:products, :biz).where('products.to_date >= ?', Date.today()).order('products.to_date').uniq}
 
 	scope :select_by_zip_distance_cat, -> (zip,distance,cat) \
 		{Store.within(distance, :origin=>zip).includes(:products, :biz). \
@@ -31,21 +31,23 @@ class Store < ActiveRecord::Base
 					where('products.to_date >= ?', Date.today()).order('products.to_date')}
 
 	def self.get_products (search_params)
-		# logger.debug "**********************************  #{search_params} "
-		# logger.debug "**********************************  search_params #{search_params['category_ids']} #{search_params['distance']}  #{search_params['zip_code']}   "
+# logger.debug "**********************************  #{search_params} "
+# logger.debug "**********************************  search_params #{search_params['category_ids']} #{search_params['distance']}  #{search_params['zip_code']}   "
 		cnt = 0
 		if !search_params.empty?
 			cnt +=1 if search_params['zip_code'] != ""
 			cnt +=2	if search_params['category_ids'] != []
 		end
-
+# logger.debug "************************************     search count  #{cnt}"
 		case 
 		when cnt == 0
 			Store.products_not_expired
 		when cnt == 1
-			if search_params['distance'] == ""
+			if search_params['distance'].nil? || search_params['distance'] == ""
+# logger.debug "************************************     search zip only #{search_params['zip_code']}"
 				Store.select_by_zip_code(search_params['zip_code'])
 			else
+# logger.debug "************************************     search zip and distance #{search_params['zip_code']} #{search_params['distance']}"
 				Store.select_by_zip_distance(search_params['zip_code'],search_params['distance'])
 			end
 		when cnt == 2

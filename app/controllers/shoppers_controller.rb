@@ -6,7 +6,7 @@ class ShoppersController < ApplicationController
   # GET /shoppers
   # GET /shoppers.json
   def index
-    @shoppers = Shopper.all
+    # @shoppers = Shopper.all
   end
 
   # GET /shoppers/1
