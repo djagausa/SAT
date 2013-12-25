@@ -13,6 +13,12 @@ module ApplicationHelper
 		      		render 'head_nav'
 		    	end
 		    end
+	   	elsif params[:controller] == 'bizs' || params[:controller] == 'shoppers'
+	   		if params[:action] == 'new'
+	   			render 'head_nav_new'
+	   		else
+	   			render 'head_nav'
+	   		end
 	   	else
 	   		render 'head_nav'
 	   	end

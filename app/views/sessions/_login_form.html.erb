@@ -7,10 +7,12 @@
  		<%= label_tag :password %>
  		<%= password_field_tag :password %>
  	</div>
- 	<div class="field">
- 		<%= label_tag :remember_me %>
+ 	<div class="checkbox inline">
  		<%= check_box_tag :remember_me, 1, params[:remember_me] %>
+ 		<%= label_tag :remember_me %>
  	</div>
+ 	<br><br>
  	<div class="actions"><%= submit_tag "Log in" %></div>
+ 	<hr>
  	<p><%= link_to "Reset password!", new_password_reset_path %></p>
 <% end %>

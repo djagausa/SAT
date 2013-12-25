@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user.nil?
         flash.now[:error] = "Invalid email/password combination."
         session[:type] = nil
-        redirect_to :root
+        render :new
     else
     	sign_in(user)
       if user.as_user_type == "Biz"

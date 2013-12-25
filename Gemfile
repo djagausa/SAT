@@ -77,6 +77,7 @@ gem 'geokit'
 gem 'geokit-rails'
 gem 'google-v3-geocoder'
 gem 'gmaps4rails'
+gem 'social-share-button'
 
 
 

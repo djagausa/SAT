@@ -2,13 +2,12 @@
   <%= f.input :email %>
   <%= f.input :zip_code %>
   <%= f.input :distance %>
-  <%= f.input :home_page, as: :boolean %>
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
   <%= f.association :categories, as: :check_boxes %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                shoppers_path, :class => 'btn' %>
+                root_path, :class => 'btn' %>
   </div>
 <% end %>

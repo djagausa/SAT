@@ -20,7 +20,8 @@
                         <P class="thumb_loc">Store: <%= store.biz.name %></p>
                       </div>         
                       <div class="caption pull-right">  
-                        <p><a href="#" class="btn btn-success">Share</a></p>
+                        <p class="thumb_share">Share this...</p>
+                        <%= social_share_button_tag(:title => "Shop Around Town Deal", :url => product_url(product.id)) %>
                         <br /><br /><br />
                         <p><a href="<%= product_path(product.id)%>" class="btn btn-warning">Info</a></p> 
                       </div>  

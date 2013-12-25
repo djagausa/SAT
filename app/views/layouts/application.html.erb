@@ -14,13 +14,11 @@
   </head>
   
   <body>
-  
-  <%= head_paratial_selection (params)  %>
-
-      
+    <%= head_paratial_selection (params)  %>
     <div class="container master-container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% flash.each do |key, value| %>
+        <div class="alert"><%= value %></div>
+      <% end %>
       <%= yield %>
     </div>
     <footer class="footer">

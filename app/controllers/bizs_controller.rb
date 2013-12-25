@@ -31,7 +31,6 @@ class BizsController < ApplicationController
   # POST /bizs.json
   def create
     @biz = Biz.new(biz_params)
-
     if @biz.save
       user = User.authenticate(params[:biz][:email], params[:biz][:password])
       sign_in(user)
