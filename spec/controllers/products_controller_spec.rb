@@ -50,6 +50,8 @@ describe ProductsController do
   describe 'POST #create' do
     context "with valid attributes" do
       before :each do
+        controller.class.skip_before_filter :authorize_biz
+        controller.class.skip_before_filter :current_biz
       	session[:type] = SAT_BIZ_TYPE
         @biz = create(:biz)
       end
@@ -66,6 +68,8 @@ describe ProductsController do
 
     context "with invalid attributes" do
       before :each do
+        controller.class.skip_before_filter :authorize_biz
+        controller.class.skip_before_filter :current_biz
         session[:type] = SAT_BIZ_TYPE
         @biz = create(:biz)
       end

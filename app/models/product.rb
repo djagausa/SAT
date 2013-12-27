@@ -3,8 +3,6 @@ class Product < ActiveRecord::Base
 	belongs_to :biz
 	has_many :stores, through: :biz
 
-	
-
 	validates :name, presence: true, uniqueness: true
 	validates :original_price, :sale_price, :from_date, :to_date, presence:  true
 

@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe Biz do
-  before do
+  	before do
  		@biz = build(:biz)
- end	
+ 	end	
 
  	it "should have a valid factory"  do
  		expect(build(:biz)).to be_valid
