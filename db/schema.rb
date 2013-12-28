@@ -50,18 +50,7 @@ ActiveRecord::Schema.define(version: 20131217234204) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
 
-  create_table "users", force: true do |t|
-    t.integer  "as_user_id"
-    t.string   "as_user_type"
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "password_reset_token"
-    t.datetime "password_reset_sent_at"
-    t.string   "auth_token"
-  end
-  
+
   create_table "bizizations", force: true do |t|
     t.integer  "shopper_id"
     t.integer  "biz_id"
@@ -138,5 +127,17 @@ ActiveRecord::Schema.define(version: 20131217234204) do
     t.datetime "updated_at"
   end
 
+
+  create_table "users", force: true do |t|
+    t.integer  "as_user_id"
+    t.string   "as_user_type"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "password_reset_token"
+    t.datetime "password_reset_sent_at"
+    t.string   "auth_token"
+  end
 
 end

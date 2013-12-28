@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         session[:type] = nil
         render :new
     else
-    	sign_in(user)
+    	sat_sign_in(user)
       if user.as_user_type == "Biz"
         redirect_to Biz.find_biz(user.as_user_id)
       else

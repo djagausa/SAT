@@ -31,7 +31,7 @@ class ShoppersController < ApplicationController
     @shopper = Shopper.new(shopper_params)
     if @shopper.save
       user = User.authenticate(params[:shopper][:email], params[:shopper][:password])
-      sign_in(user)
+      sat_sign_in(user)
       product_cats = params[:shopper][:category_ids][0...-1]
       @shopper.categories = product_cats.map {|id| Category.find(id)}
       redirect_to @shopper, notice: 'Shopper was successfully created.'

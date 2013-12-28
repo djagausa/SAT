@@ -32,7 +32,7 @@ class BizsController < ApplicationController
     @biz = Biz.new(biz_params)
     if @biz.save
       user = User.authenticate(params[:biz][:email], params[:biz][:password])
-      sign_in(user)
+      sat_sign_in(user)
       redirect_to @biz, notice: 'Biz was successfully created.'
     else
       render action: 'new'

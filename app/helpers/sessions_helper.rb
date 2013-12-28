@@ -1,5 +1,5 @@
 module SessionsHelper
-	def sign_in(user)
+	def sat_sign_in(user)
 		session[:as_user_id] = user.as_user_id
 		session[:user_id] = user.id
 		if params[:remember_me]
