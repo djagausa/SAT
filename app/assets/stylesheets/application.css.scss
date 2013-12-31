@@ -18,6 +18,8 @@
 @import "home.css.scss";
 @import "products.css.scss";
 @import "scaffold.css.scss";
+@import "faqs.css.scss";
+
 
 html, body {
   height: 100%;
@@ -91,7 +93,8 @@ article .content {
   color: #777;
 }
 .thumbnail{
-  background-color: #E9F4FF
+  background-color: #E9F4FF;
+  height: 200px;
 }
 .thumb_pic{
   margin-left:20px;
