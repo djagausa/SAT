@@ -13,6 +13,7 @@
     <%= csrf_meta_tags %>
   </head>
   <div id="wrap">
+    <div id="main">
   <body>
     <%= head_paratial_selection (params)  %>
     <div class="container master-container">
@@ -22,6 +23,7 @@
       <%= yield %>
     </div>
   </div>
+</div>
     <footer class="footer">
       <div class="container">
         <ul class="footer-links span3">
@@ -42,7 +44,7 @@
         </ul>
         
       </div>
-          </footer>
+      </footer>
       <div class="footer-copyright span12">
           <p>Copyright 2013 <%= link_to "Shop Around Town", root_path  %></p>
       </div>
