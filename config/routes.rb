@@ -18,6 +18,8 @@ Sat::Application.routes.draw do
   resources :stores
   resources :shoppers
   resources :products
+  resources :abouts
+  resources :faqs
 
   resources :categories, shallow: true  do
     resources :products
