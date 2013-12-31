@@ -30,8 +30,6 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'acts_as_relation', '~> 1.0'
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -74,11 +72,12 @@ gem 'simple_form', '~> 3.0.0'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem "twitter-bootstrap-rails"
 gem 'paperclip'
-gem 'geokit'
-gem 'geokit-rails'
-gem 'google-v3-geocoder'
-gem 'gmaps4rails'
+gem 'geokit', '1.7.1'
+gem 'geokit-rails', '2.0.1'
+gem 'google-v3-geocoder', '1.0.0'
+gem 'gmaps4rails', '2.1.1'
 gem 'social-share-button'
+gem 'acts_as_relation', '~> 1.0'
 
 
 
