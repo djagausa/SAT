@@ -2,11 +2,10 @@
   <div>
     <% @stores.each do |store| %>
       <% store.products.in_groups_of(1, false) do |products| %>
-          <tr>
             <ul class="thumbnails" > 
               <% products.each do |product| %>
                 <li class="span12">  
-                  <div class="thumbnail" style="height: 200px;">  
+                  <div class="thumbnail">  
                     <div class="span4 thumb_pic">  
                       <h5 class="product_name"><%= product.name %></h5>    
                       <%= image_tag product.photo.url(:small) if !product.photo_file_name.nil? %>    
@@ -30,9 +29,8 @@
                 </li>  
             <% end %>  <!-- products each -->
           </ul> 
-        </tr>
       <% end %> <!-- prducts  -->
     <% end %>  <!-- stores   -->
   </div>
-  <% end %>
+<% end %>
 
