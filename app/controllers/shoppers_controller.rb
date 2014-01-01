@@ -12,7 +12,10 @@ class ShoppersController < ApplicationController
   # GET /shoppers/1
   # GET /shoppers/1.json
   def show
-    @stores=Store.get_products("category_ids" => @shopper.categories.pluck(:id),"zip_code" => @shopper.zip_code,"distance" => @shopper.distance)
+    @products=Product.get_products( "category_ids" => @shopper.categories.pluck(:id),
+                                    "zip_code" => @shopper.zip_code,
+                                    "distance" => @shopper.distance,
+                                    "page" => params[:page])
     render action: 'index'
   end
 

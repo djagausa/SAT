@@ -326,6 +326,7 @@ DEPENDENCIES
   hirb
   jbuilder (~> 1.2)
   jquery-rails
+  kaminari
   launchy (~> 2.3.0)
   paperclip
   pg (= 0.15.1)

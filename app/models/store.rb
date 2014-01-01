@@ -5,61 +5,6 @@ class Store < ActiveRecord::Base
 	has_many			:products, through: :biz
   	validates			:zip_code, presence: true
 
-	scope :select_by_zip_code, -> (zip_code) \
-		{Store.all.includes(:products,:biz). \
-					where(:stores => {:zip_code => zip_code}). \
-					where('products.to_date >= ?', Date.today()).order('products.to_date').uniq}
-	
-	scope :select_by_zip_cat, -> (zip_code,cat) \
-		{Store.all.includes(:products,:biz). \
-					where('products.to_date >= ?', Date.today()). \
-					where(:stores => {:zip_code => zip_code}). \
-					where(:products => {:category_id => cat}).order('products.to_date').uniq}
-
-	scope :products_not_expired, -> {Store.all.includes(:products, :biz).where('products.to_date >= ?', Date.today()).order('products.to_date').uniq}
-
-	scope :select_by_zip_distance, -> (zip, distance) \
-		{Store.within(distance, :origin=>zip).includes(:products, :biz).where('products.to_date >= ?', Date.today()).order('products.to_date').uniq}
-
-	scope :select_by_zip_distance_cat, -> (zip,distance,cat) \
-		{Store.within(distance, :origin=>zip).includes(:products, :biz). \
-					where({:products => {:category_id => cat}}). \
-					where('products.to_date >= ?', Date.today()).order('products.to_date')}
-
-	scope :select_by_cat, -> (cat) \
-		{Store.all.includes(:products, :biz).where({:products => {:category_id => cat}}).\
-					where('products.to_date >= ?', Date.today()).order('products.to_date')}
-
-	def self.get_products (search_params)
-# logger.debug "**********************************  #{search_params} "
-# logger.debug "**********************************  search_params #{search_params['category_ids']} #{search_params['distance']}  #{search_params['zip_code']}   "
-		cnt = 0
-		if !search_params.empty?
-			cnt +=1 if search_params['zip_code'] != ""
-			cnt +=2	if search_params['category_ids'] != []
-		end
-# logger.debug "************************************     search count  #{cnt}"
-		case 
-		when cnt == 0
-			Store.products_not_expired
-		when cnt == 1
-			if search_params['distance'].nil? || search_params['distance'] == ""
-# logger.debug "************************************     search zip only #{search_params['zip_code']}"
-				Store.select_by_zip_code(search_params['zip_code'])
-			else
-# logger.debug "************************************     search zip and distance #{search_params['zip_code']} #{search_params['distance']}"
-				Store.select_by_zip_distance(search_params['zip_code'],search_params['distance'])
-			end
-		when cnt == 2
-			Store.select_by_cat(search_params['category_ids'])
-		when cnt == 3
-			if search_params['distance'] == ""
-				Store.select_by_zip_cat(search_params['zip_code'],search_params['category_ids'])
-			else
-				Store.select_by_zip_distance_cat(search_params['zip_code'],search_params['distance'],search_params['category_ids'])
-			end
-		end
-	end
 
 	private
 
