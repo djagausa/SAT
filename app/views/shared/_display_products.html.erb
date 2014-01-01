@@ -1,9 +1,9 @@
-<% if @stores != [] %>
+<% if @products != [] %>
   <div>
-    <% @stores.each do |store| %>
-      <% store.products.in_groups_of(1, false) do |products| %>
+    <% @products.each do |product| %>
+      <% product.stores.in_groups_of(1, false) do |stores| %>
             <ul class="thumbnails" > 
-              <% products.each do |product| %>
+              <% stores.each do |store| %>
                 <li class="span12">  
                   <div class="thumbnail">  
                     <div class="span4 thumb_pic">  
@@ -27,10 +27,10 @@
                     </div>  <!-- span6  --> 
                   </div> <!-- thumbnail  -->
                 </li>  
-            <% end %>  <!-- products each -->
-          </ul> 
-      <% end %> <!-- prducts  -->
-    <% end %>  <!-- stores   -->
+              <% end %>  <!-- stores each -->
+            </ul> 
+      <% end %> <!-- product in group -->
+    <% end %>  <!-- products each   -->
   </div>
 <% end %>
 

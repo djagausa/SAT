@@ -78,6 +78,7 @@ gem 'google-v3-geocoder', '1.0.0'
 gem 'gmaps4rails', '2.1.1'
 gem 'social-share-button'
 gem 'acts_as_relation', '~> 1.0'
-
+gem 'kaminari'
+gem 'contact_us', '~> 0.4.0'
 
 
