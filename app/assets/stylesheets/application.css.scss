@@ -9,10 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  /*
- *= require bootstrap
  *= require bootstrap-fileupload
  *= require social-share-button
+ *= require bootstrap_and_overrides
  *= require_self 
+ *= require_tree.
 */
 
 @import "home.css.scss";
@@ -20,10 +21,9 @@
 @import "scaffold.css.scss";
 @import "faqs.css.scss";
 
-
 html, body {
-  height: 100%;
   padding-top: 25px;
+  height: 100%;
 }
 #wrap
 {

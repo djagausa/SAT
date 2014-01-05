@@ -19,7 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -70,7 +70,8 @@ end
 
 gem 'simple_form', '~> 3.0.0'
 gem 'bootstrap-sass', '~> 2.3.1.0'
-gem "twitter-bootstrap-rails"
+gem 'less-rails'
+gem 'twitter-bootstrap-rails'
 gem 'paperclip'
 gem 'geokit', '1.7.1'
 gem 'geokit-rails', '2.0.1'
@@ -79,6 +80,5 @@ gem 'gmaps4rails', '2.1.1'
 gem 'social-share-button'
 gem 'acts_as_relation', '~> 1.0'
 gem 'kaminari'
-gem 'contact_us', '~> 0.4.0'
 
 

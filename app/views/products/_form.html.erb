@@ -1,8 +1,8 @@
 <%= simple_form_for ([@biz, @product]), :html => {:multipart => true, :class => 'form-horizontal' } do |f| %>
   <%= f.input :name %>
   <%= f.input :description %>
-  <%= f.input :sale_price %>
-  <%= f.input :original_price %>
+  <%= f.input :sale_price, as: :currency %>
+  <%= f.input :original_price, as: :currency %>
   <%= f.input :from_date, as: :date%>
   <%= f.input :to_date, as: :date %>
   <%= f.association :category, :include_blank => false  %>

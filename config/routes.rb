@@ -20,6 +20,7 @@ Sat::Application.routes.draw do
   resources :products
   resources :abouts
   resources :faqs
+  resources :contacts, only: [:new, :create]
 
   resources :categories, shallow: true  do
     resources :products
