@@ -12,7 +12,7 @@
                     </div>
                     <div class="thumb_data">
                       <div class="span6 thumb_prod_name">  
-                        <p class="thumb_disc">* <%= truncate(product.description, :length => 25, :seperator => ' ') %> *</p>
+                        <p class="thumb_disc">* <%= truncate(product.description, :length => 25, :separator => ' ') %> *</p>
                         <p class="thumb_price">Sale Price: <%= number_to_currency(product.sale_price) %></p>
                         <p class="thumb_end">Sales Ends: <%= product.to_date.strftime('%b-%e-%Y') %></p>
                         <P class="thumb_time">Remaining Days: <%=" #{(product.to_date.to_date - Date.today).to_i} days" %></p>
