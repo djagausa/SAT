@@ -20,6 +20,7 @@
 @import "products.css.scss";
 @import "scaffold.css.scss";
 @import "faqs.css.scss";
+@import "sessions.css.scss";
 
 html, body {
   padding-top: 25px;
@@ -118,4 +119,9 @@ div.well {
 .thumb_loc {
   font-weight: bold;
   color:green;
+}
+.signup_form{
+  width: 500px;
+  margin: auto;
+  
 }

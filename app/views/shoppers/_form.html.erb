@@ -1,4 +1,4 @@
-<%= simple_form_for @shopper, :html => { :class => 'form-horizontal' } do |f| %>
+<%= simple_form_for @shopper, :html => { :class => 'form-horizontal signup_form' } do |f| %>
   <%= f.input :email %>
   <%= f.input :zip_code %>
   <%= f.input :distance %>
@@ -11,3 +11,6 @@
                 root_path, :class => 'btn' %>
   </div>
 <% end %>
+
+<a href="#" rel="tooltip" title="Click to reveal tracks">Link text</a>
+

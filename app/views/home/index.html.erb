@@ -1,9 +1,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span12">
-      <div class="span10 pagination-center col-offset-2">
           <img class="mp_image" src="sat-header.jpg">
-      </div>
     </div>
     <div class="span3">
       <div class="well sidebar-nav">
@@ -14,7 +12,7 @@
             <hr></hr>
             <%= f.input_field :zip_code, :placeholder=>"Zip Code", :class=> "input-medium" %>
             <%= f.input_field :distance, :placeholder=>"Miles", :class=> "input-medium" %>
-            <%= f.submit 'Search' %>
+            <%= f.submit 'Search', :class => 'btn' %>
           <% end %> <!-- do  -->
         </ul>
       </div><!--/well -->

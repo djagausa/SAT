@@ -6,7 +6,7 @@ module ApplicationHelper
 				render 'head_vistor'
 			elsif session[:type] == SAT_SHOPPER_TYPE
 				render 'head_shopper'
-			else session[:type] == SAT_BIZ_TYPE
+			elsif session[:type] == SAT_BIZ_TYPE
 				if params[:action] == 'edit' || params[:action] == 'new'
 	    			render 'head_nav_no_edit'
 	    		else

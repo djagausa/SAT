@@ -4,7 +4,6 @@ Sat::Application.routes.draw do
   ActiveAdmin.routes(self)
   root :to => "home#index"
 
-  resources :sessions, only: [:new, :create, :destroy]
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
@@ -12,7 +11,9 @@ Sat::Application.routes.draw do
 
   post 'home/create'
 
-  resources :home, only: [:index, :create]
+  resource :session, only:  [:new, :create, :destroy]
+  resources :home, only:      [:index, :create]
+  resources :contacts, only:  [:new, :create]
 
   resources :password_resets
   resources :stores
@@ -20,7 +21,6 @@ Sat::Application.routes.draw do
   resources :products
   resources :abouts
   resources :faqs
-  resources :contacts, only: [:new, :create]
 
   resources :categories, shallow: true  do
     resources :products

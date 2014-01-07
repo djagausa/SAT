@@ -16,6 +16,15 @@ Sat::Application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  ActionMailer::Base.smtp_settings = {
+    :address => "smtp.gmail.com",
+    :enable_starttis_auto => true,
+    :port => 587,
+    :authenication => :plain,
+    :user_name => ENV['EMAIL_USER'],
+    :password => ENV['EMAIL_PASSWORD']
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
@@ -27,6 +36,6 @@ Sat::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   config.log_level = :debug
-  config.action_mailer.default_url_options = { :host => "www.example.com" }
+  config.action_mailer.default_url_options = { :host => "www.sat.com" }
   
 end

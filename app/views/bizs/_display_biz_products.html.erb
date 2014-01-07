@@ -26,6 +26,7 @@
                 <p class="biz_product_desc">Sales Starts: <%= product.from_date.strftime('%b-%e-%Y') %></p>
                 <p class="biz_product_desc">Sales Ends: <%= product.to_date.strftime('%b-%e-%Y') %></p>
                 <P class="biz_product_desc">Remaining Days: <%=" #{(product.to_date.to_date - Date.today)} days" %></p>
+                <P class="biz_product_desc">Category: <%= Category.find(product.category).name %></p>
               </div>
             </li>  
           <% end %>
