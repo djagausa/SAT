@@ -12,15 +12,19 @@
  *= require bootstrap-fileupload
  *= require social-share-button
  *= require bootstrap_and_overrides
+ *= require jquery.ui.datepicker
  *= require_self 
  *= require_tree.
 */
 
 @import "home.css.scss";
 @import "products.css.scss";
+@import "stores.css.scss";
 @import "scaffold.css.scss";
 @import "faqs.css.scss";
 @import "sessions.css.scss";
+@import "bizs.css.scss";
+
 
 html, body {
   padding-top: 25px;
@@ -122,6 +126,4 @@ div.well {
 }
 .signup_form{
   width: 500px;
-  margin: auto;
-  
 }

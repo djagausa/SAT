@@ -1,6 +1,15 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.store_info{
-	margin-top: 100px;
+.product_image{
+	padding-left: 35px;
+	padding-bottom: 10px;
+}
+.product_image p {
+	font-size: 15px;
+	font-weight: bold;
+}
+.product_submit_form{
+	margin-left: 150px;
+	padding:20px 50px;
 }

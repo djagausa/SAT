@@ -23,6 +23,7 @@ gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
@@ -80,5 +81,4 @@ gem 'gmaps4rails', '2.1.1'
 gem 'social-share-button'
 gem 'acts_as_relation', '~> 1.0'
 gem 'kaminari'
-
 

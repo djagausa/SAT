@@ -1,14 +1,19 @@
-<%= simple_form_for ([@biz, @product]), :html => {:multipart => true, :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name %>
-  <%= f.input :description %>
-  <%= f.input :sale_price, as: :currency %>
-  <%= f.input :original_price, as: :currency %>
-  <%= f.input :from_date, as: :date%>
-  <%= f.input :to_date, as: :date %>
-  <%= f.association :category, :include_blank => false  %>
-
-  <%= image_tag @product.photo.url(:small) if @product.photo? %>
-
+  <div class='span7 form-horizontal'>
+  <%= simple_form_for ([@biz, @product]), :html => {:multipart => true } do |f| %>
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :sale_price, :input_html => {value: number_with_precision(f.object.sale_price, precision: 2)}, as: :currency %>
+    <%= f.input :original_price, :input_html => {value: number_with_precision(f.object.original_price, precision: 2)}, as: :currency %>
+    <%= f.input :from_date, as: :string, input_html: { class: "datepicker", value: Date.today } %>
+    <%= f.input :to_date, as: :string, input_html: { class: "datepicker", value: Date.today } %>
+    <%= f.association :category, :include_blank => false  %>
+  </div>
+  <div class='product_image'>
+    <% if @product.photo %>
+      <p>Current Product Image</p>
+      <%= image_tag @product.photo.url(:small) %>
+    <% end %>
+  </div>
   <div class="fileupload fileupload-new" data-provides="fileupload">
     <div class="fileupload-preview thumbnail" style="width: 100px; height: 100px;"></div>
       <div>
@@ -16,11 +21,12 @@
       <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
     </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+  <div class='span12'></div>
+  <div class='span7 form-horizontal product_submit_form'>
+    <div class="form-actions">
+      <%= f.button :submit, :class => 'btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 biz_path(Biz.find_biz(session[:as_user_id])), :class => 'btn' %>
+    </div>
   </div>
-	
 <% end %>
