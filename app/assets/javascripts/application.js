@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.datepicker
+//= require jquery.ui.all
 //= require twitter/bootstrap
 //= require bootstrap-fileupload
 //= require underscore
