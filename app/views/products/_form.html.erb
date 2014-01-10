@@ -25,8 +25,7 @@
   <div class='span7 form-horizontal product_submit_form'>
     <div class="form-actions">
       <%= f.button :submit, :class => 'btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                biz_path(Biz.find_biz(session[:as_user_id])), :class => 'btn' %>
+      <%= link_to 'Cancel', biz_path(Biz.find_biz(session[:as_user_id])), :class => 'btn' %>
     </div>
   </div>
 <% end %>

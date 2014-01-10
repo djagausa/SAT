@@ -16,6 +16,8 @@ module ApplicationHelper
 	   	elsif params[:controller] == 'bizs' || params[:controller] == 'shoppers'
 	   		if params[:action] == 'new'
 	   			render 'head_nav_new'
+	   		elsif params[:action] == 'edit'
+	   			render 'head_nav_edit'
 	   		else
 	   			render 'head_nav'
 	   		end

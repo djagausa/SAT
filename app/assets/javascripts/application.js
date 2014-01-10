@@ -10,6 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+// require turbolinks  -- having problems with submit button working correctly
+// require jquery.turbolinks  -- 
+//
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all

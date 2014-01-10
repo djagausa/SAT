@@ -61,9 +61,10 @@ class ShoppersController < ApplicationController
   end
 
   def search
-    @stores=Store.get_products( "category_ids" => params[:shopper][:category_ids][0...-1],
+    @products=Product.get_products( "category_ids" => params[:shopper][:category_ids][0...-1],
                                 "zip_code" => params[:shopper][:zip_code],
-                                "distance" => params[:shopper][:distance])
+                                "distance" => params[:shopper][:distance],
+                                "page" => params[:page])
   end
 
 

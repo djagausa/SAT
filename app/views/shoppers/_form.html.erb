@@ -7,10 +7,6 @@
   <%= f.association :categories, as: :check_boxes %>
   <div class="form-actions">
     <%= f.button :submit, :class => 'btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                root_path, :class => 'btn' %>
+    <%= link_to "Cancel", root_path, :class => 'btn' %>
   </div>
 <% end %>
-
-<a href="#" rel="tooltip" title="Click to reveal tracks">Link text</a>
-

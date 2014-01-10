@@ -3,7 +3,8 @@
       <div class="container">
         <a class="brand" href="#">Shop Around Town</a>
         <ul class="nav">
-          <li><%= link_to "Home", biz_path(@biz)  %></li>     
+          <li><%= link_to "Home", biz_path(Biz.find_biz(session[:as_user_id]))  %></li>  
+          <li><%= link_to "Sign Out", signout_path, method: "delete" %></li>
           </li>
         </ul>
       </div>
