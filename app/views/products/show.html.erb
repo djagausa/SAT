@@ -1,4 +1,5 @@
 
+<div class="product_show_page">
 
 <%- model_class = Product -%>
 <div class="page-header">
@@ -6,12 +7,12 @@
 </div>
 
 <div class="container">
-  <div class="span12">
-    <div class="span4 pull-right">
 
+  <div class="span12">
+    <div class="span4 pull-center">
       <%= image_tag @product.photo.url() if @product.photo? %>
     </div>
-    <div class="span6">
+    <div class="span7 pull-right">
       <dl class="dl-horizontal">
         <dt><strong><%= 'Sale Price: '%></strong></dt>
         <dd><%= number_to_currency(@product.sale_price) %></dd>
@@ -23,36 +24,31 @@
         <dd><%= @product.to_date.strftime('%b-%e-%Y') %></dd>
         <dt><strong>Time Left: </strong></dt>
         <dd><%=" #{(@product.to_date.to_date - Date.today)} days" %></dd>
-
+        <br/> <br/>
+        <dt>Share this...</dt>
+        <dd><%= social_share_button_tag(:title => "Shop Around Town Deal") %></dd>
       </dl>
-      <br>
-      <br>
-      <p class="thumb_share">Share this...</p>
-      <%= social_share_button_tag(:title => "Shop Around Town Deal") %>
+     
+      
     </div>
   </div>
 
-  <div class="span12 store_info">
-    <div class="span2">
+  <div class='span12 store_info'>
+    <div class='span4'>
       <%= image_tag @biz.logo.url(:small) if @biz.logo? %>
-    </div>
-    <div class="span6">
-        <strong><%= 'Store: '%></strong><br>
+      <br/> <br/>
+        <strong><%= 'Store Info: '%></strong><br>
         <%= @biz.name %><br>
         <% @stores.each do |store| %>
           <%= store.street1 %><br>
           <%= store.city %>
           <%= store.state %>
           <%= store.zip_code %>
-          <p></p>
-          <strong><%= 'Phone Number: ' %></strong>
-          <dd><%= store.phone_number %></dd>
+          <br/> <br/>
+          <strong>Phone Number: </strong> <%= store.phone_number %>
         <% end %>
-    </div> <!-- span6  -->
-  </div>  <!-- span12 -->
-</div>   <!-- container  -->
-<br />
-<br />
+    </div> <!-- span4  -->
+    <div class='span7 pull-right'>
   <div style='width: 400px;'>
     <div id="map" style='width: 400px; height: 400px;'></div>
   </div>
@@ -60,3 +56,8 @@
 <script type="text/javascript">
   buildMap(<%=raw @hash.to_json %>)
 </script>
+</div>
+ </div>  <!-- span12 -->
+ <div class='span12'><br/><br /></div>
+</div>   <!-- container  -->
+</div>

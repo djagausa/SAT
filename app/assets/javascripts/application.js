@@ -11,7 +11,7 @@
 // about supported directives.
 //
 // require turbolinks  -- having problems with submit button working correctly
-// require jquery.turbolinks  -- 
+// require jquery.turbolinks  -- having problems with submit button working correctly
 //
 //= require jquery
 //= require jquery_ujs
