@@ -3,7 +3,7 @@ module ApplicationHelper
 	def head_paratial_selection (params)
 		if params[:controller] == 'products'
 			if session[:user_id] == nil
-				render 'head_vistor'
+				render 'head_visitor'
 			elsif session[:type] == SAT_SHOPPER_TYPE
 				render 'head_shopper'
 			elsif session[:type] == SAT_BIZ_TYPE

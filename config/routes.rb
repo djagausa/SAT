@@ -31,6 +31,8 @@ Sat::Application.routes.draw do
     resources :products
   end 
 
+  match ':status', to: 'errors#show', constraints: {status: /\d{3}/}, via: :all
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
