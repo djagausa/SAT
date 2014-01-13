@@ -1,12 +1,8 @@
- <div>
-    <% @products.in_groups_of(1, false) do |products| %>
-      <tr>
-        <ul class="thumbnails" > 
+    <ul class="thumbnails" > 
+      <li class="span12"> 
+        <% @products.in_groups_of(1, false) do |products| %>
           <% products.each do |product| %>
-            <li class="span12"> 
-
-            <div class="thumbnail" style="height: 200px;">  
-
+            <div class="thumbnail biz_product_thumb" style="height: 200px;">  
               <div class="span2">
                 <% if !product.photo_file_name.nil? %>
                   <%= image_tag product.photo.url(:small) %>
@@ -28,10 +24,8 @@
                 <P class="biz_product_desc">Remaining Days: <%=" #{(product.to_date.to_date - Date.today)} days" %></p>
                 <P class="biz_product_desc">Category: <%= Category.find(product.category).name %></p>
               </div>
-            </li>  
           <% end %>
         </div>
-        </ul>
-       </tr>
-    <% end %>
-  </div>
+      <% end %>
+    </li>  
+  </ul>

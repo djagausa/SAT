@@ -73,7 +73,7 @@ end
 gem 'simple_form', '~> 3.0.0'
 gem 'bootstrap-sass', '~> 2.3.1.0'
 gem 'less-rails'
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '~> 2.2.8'
 gem 'paperclip'
 gem 'geokit', '1.7.1'
 gem 'geokit-rails', '2.0.1'
