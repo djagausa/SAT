@@ -1,4 +1,12 @@
   <div class='span7 form-horizontal'>
+  <% if @product.errors.any? %>
+  <ul class='product_errors'>
+    <p>Product Creation Errors</p>
+    <% @product.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %> 
+  </ul>
+  <% end %>
   <%= simple_form_for ([@biz, @product]), :html => {:multipart => true } do |f| %>
     <%= f.input :name %>
     <%= f.input :description %>
