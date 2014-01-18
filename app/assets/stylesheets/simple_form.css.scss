@@ -1,0 +1,15 @@
+.simple_form label{
+  font-size: 16px;
+  color: black;
+}
+
+.simple_form .control-label {
+	float: left;
+	width: 180px;
+	text-align: right;
+	margin: 2px 10px;
+}
+
+.simple_form label.checkbox {
+	padding-left: 50px;
+}

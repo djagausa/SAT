@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span12">
-          <img class="mp_image" src="sat-header.jpg">
+    <div class="span12 home_img_wrapper">
+          <img class="home_img" src="sat-header.jpg">
     </div>
     <div class="span3">
       <div class="well sidebar-nav">
@@ -20,9 +20,8 @@
     <div class="span8">
       <%= render 'shared/display_products' %> 
     </div>
-    <div class="pagination">
-      <%= paginate @products  %>
-    </div>
-
+   <div class="page">
+      <%= render 'shared/page'  %>
+    </div> 
   </div>  <!-- row-fluid  -->
 </div>  <!-- container  -->

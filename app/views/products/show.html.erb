@@ -12,7 +12,7 @@
     <div class="span4 pull-center">
       <%= image_tag @product.photo.url() if @product.photo? %>
     </div>
-    <div class="span7 pull-right">
+    <div class="span7 pull-right product_show_info">
       <dl class="dl-horizontal">
         <dt><strong><%= 'Sale Price: '%></strong></dt>
         <dd><%= number_to_currency(@product.sale_price) %></dd>
@@ -33,31 +33,33 @@
     </div>
   </div>
 
-  <div class='span12 store_info'>
+  <div class='span12 product_info'>
     <div class='span4'>
-      <%= image_tag @biz.logo.url(:small) if @biz.logo? %>
+      <%= image_tag @biz.logo.url(:medium) if @biz.logo? %>
       <br/> <br/>
-        <strong><%= 'Store Info: '%></strong><br>
+        <strong>Store Info:</strong><br>
+        <div class='product_store_info'>
         <%= @biz.name %><br>
         <% @stores.each do |store| %>
           <%= store.street1 %><br>
           <%= store.city %>
           <%= store.state %>
           <%= store.zip_code %>
-          <br/> <br/>
-          <strong>Phone Number: </strong> <%= store.phone_number %>
+        </div>
+        <strong class = 'product_store_phone'>Phone Number: </strong> <%= number_to_phone(store.phone_number, area_code: true) %>
         <% end %>
+        <div class='product_biz_website_div'>
+          <strong class='product_biz_website'>Website: </strong> <%= link_to @biz.website, url_with_protocol(@biz.website), :target => '_blank' %>
+        </div>
     </div> <!-- span4  -->
     <div class='span7 pull-right'>
-  <div style='width: 400px;'>
-    <div id="map" style='width: 400px; height: 400px;'></div>
-  </div>
-
-<script type="text/javascript">
-  buildMap(<%=raw @hash.to_json %>)
-</script>
-</div>
- </div>  <!-- span12 -->
- <div class='span12'><br/><br /></div>
+      <div style='width: 400px;'>
+        <div id="map" style='width: 400px; height: 400px;'></div>
+      </div>
+      <script type="text/javascript">
+        buildMap(<%=raw @hash.to_json %>)
+      </script>
+    </div> 
+  </div>  <!-- span12 -->
 </div>   <!-- container  -->
 </div>

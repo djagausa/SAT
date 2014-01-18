@@ -1,5 +1,5 @@
 <div class='span12'>
-<div class='form-horizontal signup_form span4'>
+<div class='form-horizontal biz_signup_form span4'>
 <%= simple_form_for @biz, :html => {:multipart => true} do |f| %>
   <%= f.input :name %>
   <%= f.input :email %>
@@ -37,7 +37,7 @@
 
   <div class = 'span12'></div>
  <div class="biz_submit_form form-actions span3">
-    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= f.button :submit, "Sign Up", :class => 'btn-primary' %>
     <% if @biz.name? %>
       <%= link_to "Cancel", @biz, :class => 'btn' %>
     <% else %>

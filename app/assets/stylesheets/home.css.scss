@@ -1,6 +1,15 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+ .home_img_wrapper{
+ 	text-align: center;
+ }
+ .home_img{
+  	padding-bottom: 10px;
+}
+.home_product_display{
+	margin-bottom: 10px;
+}
 .checkbox_container {
   display: list-item;
   vertical-align: -1px;
@@ -13,11 +22,5 @@
   vertical-align: -4px;
   padding-left: 5px;
  }
- .mp_image{
- 	padding-left: 50px;
-  	padding-bottom: 10px;
-}
 
-.home_product_display{
-	margin-bottom: 10px;
-}
+

@@ -9,7 +9,7 @@
     <%= f.association :category, :include_blank => false  %>
   </div>
   <div class='product_image'>
-    <% if @product.photo %>
+    <% if !@product.photo_file_name.nil? %>
       <p>Current Product Image</p>
       <%= image_tag @product.photo.url(:small) %>
     <% end %>

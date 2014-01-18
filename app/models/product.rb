@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
 	belongs_to :biz
 	has_many :stores, through: :biz
 
-	validates :name, presence: true, uniqueness: true
+	validates :name, presence: true
 	validates :original_price, :sale_price, :from_date, :to_date, presence:  true
 
 	has_attached_file 	:photo, :styles => { :small => "150x150>", :medium => "300x300>" }
