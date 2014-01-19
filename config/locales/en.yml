@@ -20,4 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  simple_captcha:
+    label: "Please, confirm you are human"
+    placeholder: "Input letters from the image"

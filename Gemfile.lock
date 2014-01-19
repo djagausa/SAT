@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/Azdaroth/simple-captcha.git
+  revision: ab5e8aa1e18d735722c1a7d4ae6950ab09c12989
+  branch: rails-4
+  specs:
+    simple_captcha (0.1.6)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: 8c2ff62c30beda6ae4f2c389c113c3a65bd5e785
   specs:
@@ -355,6 +362,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   selenium-webdriver (~> 2.35.1)
+  simple_captcha!
   simple_form (~> 3.0.0)
   social-share-button
   spork

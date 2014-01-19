@@ -32,14 +32,19 @@ class ShoppersController < ApplicationController
   # POST /shoppers.json
   def create
     @shopper = Shopper.new(shopper_params)
-    if @shopper.save
-      user = User.authenticate(params[:shopper][:email], params[:shopper][:password])
-      sat_sign_in(user)
-      product_cats = params[:shopper][:category_ids][0...-1]
-      @shopper.categories = product_cats.map {|id| Category.find(id)}
-      redirect_to @shopper, notice: 'Shopper was successfully created.'
+    if simple_captcha_valid?
+      if @shopper.save
+        user = User.authenticate(params[:shopper][:email], params[:shopper][:password])
+        sat_sign_in(user)
+        product_cats = params[:shopper][:category_ids][0...-1]
+        @shopper.categories = product_cats.map {|id| Category.find(id)}
+        redirect_to @shopper, notice: 'Shopper was successfully created.'
+      else
+        render action: 'new'
+      end
     else
-      render action: 'new'
+      flash[:error] = "Captcha incorrect. You entered the wrong digits."
+      redirect_to :back
     end
   end
 

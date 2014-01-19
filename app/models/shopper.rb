@@ -9,5 +9,7 @@ class Shopper < ActiveRecord::Base
 	acts_as_mappable :auto_geocode => {:field=>:zip_code}
 
 	scope :find_shopper, -> (shopper_id) {find(shopper_id)} 
+	
+	apply_simple_captcha
 end
 

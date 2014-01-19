@@ -17,4 +17,6 @@ class Biz < ActiveRecord::Base
  	accepts_nested_attributes_for :stores
 
 	scope :find_biz, -> (biz_id) {find(biz_id)} 
+
+	apply_simple_captcha
 end

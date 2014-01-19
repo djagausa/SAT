@@ -30,12 +30,17 @@ class BizsController < ApplicationController
   # POST /bizs.json
   def create
     @biz = Biz.new(biz_params)
-    if @biz.save
-      user = User.authenticate(params[:biz][:email], params[:biz][:password])
-      sat_sign_in(user)
-      redirect_to @biz, notice: 'Biz was successfully created.'
+    if simple_captcha_valid?
+      if @biz.save
+        user = User.authenticate(params[:biz][:email], params[:biz][:password])
+        sat_sign_in(user)
+        redirect_to @biz, notice: 'Biz was successfully created.'
+      else
+        render action: 'new'
+      end
     else
-      render action: 'new'
+      flash[:error] = "Captcha incorrect. You entered the wrong digits."
+      redirect_to :back
     end
   end
 
