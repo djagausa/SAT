@@ -1,12 +1,17 @@
 class ShoppersController < ApplicationController
   before_action :set_shopper, only: [:show, :edit, :update, :destroy]
   before_action :authorize_shopper, only: [:edit, :update, :destroy, :show, :index]
-  before_action :correct_shopper, only: [:edit, :update, :destroy, :show, :index]
+  before_action :correct_shopper, only: [:edit, :update, :destroy, :show]
 
   # GET /shoppers
   # GET /shoppers.json
   def index
-    # @shoppers = Shopper.all
+    if !params[:shopper].nil?
+      @products=Product.get_products( "category_ids" => params[:shopper][:category_ids][0...-1],
+                                      "zip_code" => params[:shopper][:zip_code],
+                                      "distance" => params[:shopper][:distance],
+                                      "page" => params[:page])
+    end
   end
 
   # GET /shoppers/1
