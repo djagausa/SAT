@@ -56,10 +56,17 @@ class ShoppersController < ApplicationController
   # PATCH/PUT /shoppers/1
   # PATCH/PUT /shoppers/1.json
   def update
-    if @shopper.update(shopper_params)
-      redirect_to @shopper, notice: 'Shopper was successfully updated.'
+    if simple_captcha_valid?
+      if @shopper.update(shopper_params)
+        product_cats = params[:shopper][:category_ids][0...-1]
+        @shopper.categories = product_cats.map {|id| Category.find(id)}
+        redirect_to @shopper, notice: 'Shopper was successfully updated.'
+      else
+        render action: 'edit'
+      end
     else
-      render action: 'edit'
+      flash[:error] = "Captcha incorrect. You entered the wrong digits."
+      redirect_to :back
     end
   end
 
