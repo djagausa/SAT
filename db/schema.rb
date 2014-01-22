@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20140119073814) do
     t.string   "name"
     t.string   "website"
     t.string   "logo_image"
+    t.string   "email"
+    t.string   "password_digest"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "logo_file_name"
@@ -99,6 +101,8 @@ ActiveRecord::Schema.define(version: 20140119073814) do
   end
 
   create_table "shoppers", force: true do |t|
+    t.string   "email"
+    t.string   "password_digest"
     t.boolean  "home_page"
     t.string   "zip_code"
     t.float    "lng"

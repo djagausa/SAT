@@ -27,3 +27,24 @@
 .biz_captcha{
 	padding-top: 100px;
 }
+.biz_terms{
+	padding-top: 40px;
+	padding-left: 20px;
+	width: 300px;
+}
+.biz_errors{
+	padding: 5px;
+	color: black;
+	font-weight: bold;
+	border-radius: 5px;
+	background-color: white;
+	margin-bottom: 30px;
+	margin-left: 150px
+}
+.biz_errors li{
+	padding-left: 20px;
+	list-style: none;
+}
+.biz_errors p {
+	font-size: 17px;
+}

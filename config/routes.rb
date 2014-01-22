@@ -21,6 +21,7 @@ Sat::Application.routes.draw do
   resources :products
   resources :abouts
   resources :faqs
+  resources :terms
 
   resources :categories, shallow: true  do
     resources :products

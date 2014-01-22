@@ -12,19 +12,17 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-  <div id="wrap">
   <div id="main">
   <body>
     <div class="container">
-    <%= head_paratial_selection (params)  %>
-    <div class="container master-container">
-      <% flash.each do |key, value| %>
-        <div class="alert"><%= value %></div>
-      <% end %>
-      <%= yield %>
-    </div>
-  </div>
-  </div>
+      <%= head_paratial_selection (params)  %>
+      <div class="container master-container">
+        <% flash.each do |key, value| %>
+          <div class="alert"><%= value %></div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div> <!-- container  -->
     <footer class="footer">
       <div class="container">
         <ul class="footer-links span3">
@@ -33,7 +31,7 @@
         </ul>
         <ul class="footer-links span3">
           <h5>Policies</h5>  
-          <li><%= link_to "Terms & Conditions", faqs_path  %></li>  
+          <li><%= link_to "Terms & Conditions", terms_path  %></li>  
           <li><%= link_to "Privacy Policy", faqs_path  %></li>  
 
         </ul>
@@ -45,12 +43,15 @@
         </ul>
         
       </div>
-      </footer>
       <div class="footer-copyright span12">
           <p>Copyright 2013 <%= link_to "Shop Around Town", root_path  %></p>
       </div>
-    </div>
+      </footer>
+      
   </body>
+    </div>
+
+
 </html>
 
 

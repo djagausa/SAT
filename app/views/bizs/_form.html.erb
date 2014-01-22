@@ -1,51 +1,64 @@
-<div class='span12'>
-<div class='form-horizontal biz_signup_form span4'>
-<%= simple_form_for @biz, :html => {:multipart => true} do |f| %>
-  <%= f.input :name %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.input :password_confirmation %>
-  <%= f.input :website %>
-  <%= f.simple_fields_for :stores do |b| %>
-    <%= b.input :street1 %>
-    <%= b.input :street2 %>
-    <%= b.input :city %>
-    <%= b.input :state %>
-    <%= b.input :zip_code %>
-    <%= b.input :phone_number %>
-    <%= b.input :contact_name %>
-    <%= b.input :hours %>
-    <%= b.input :days %>
-  <% end %>
- </div>  
- <div class='span3'>
- <div class='biz_logo'>
-  <% if @biz.logo? %>
-    <p>Current Logo</p>
-    <%= image_tag @biz.logo.url(:medium) %>
-  <% end %>
-  </div>
-  <div class="fileupload fileupload-new" data-provides="fileupload">
-      <div class="fileupload-preview thumbnail" style="width: 200px; height: 200px;"></div>
-      <div>
-        <span class="btn btn-file"><span class="fileupload-new">Select Logo</span>
-        <span class="fileupload-exists">Change</span><%= f.file_field :logo %></span>
-      <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+  <% if @biz.errors.any? %>
+    <div class='span6 biz_errors'>
+    <ul>
+      <p>Merchant Creation Errors</p>
+      <% @biz.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %> 
+    </ul>
     </div>
-  </div>
-  <div class='biz_captcha'><%= show_simple_captcha %></div>
-  
-  </div>
-
-  <div class = 'span12'></div>
- <div class="biz_submit_form form-actions span3">
-    <%= f.button :submit, "Sign Up", :class => 'btn-primary' %>
-    <% if @biz.name? %>
-      <%= link_to "Cancel", @biz, :class => 'btn' %>
-    <% else %>
-      <%= link_to "Cancel", root_path, :class => 'btn' %>
+  <% end %>
+  <div class='span12'>
+  <div class='form-horizontal biz_signup_form span4'>
+  <%= simple_form_for @biz, :html => {:multipart => true} do |f| %>
+    <%= f.input :name %>
+    <%= f.input :email %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+    <%= f.input :website %>
+    <%= f.simple_fields_for :stores do |b| %>
+      <%= b.input :street1 %>
+      <%= b.input :street2 %>
+      <%= b.input :city %>
+      <%= b.input :state %>
+      <%= b.input :zip_code %>
+      <%= b.input :phone_number %>
+      <%= b.input :contact_name %>
+      <%= b.input :hours %>
+      <%= b.input :days %>
     <% end %>
-  </div>
-
-<% end %>
+   </div>  <!-- form-horizontal  -->  
+   <div class='span3'>
+     <div class='biz_logo'>
+      <% if @biz.logo_image? %>
+        <p>Current Logo</p>
+        <%= image_tag @biz.logo.url(:medium) %>
+      <% end %>
+      </div>
+      <div class="fileupload fileupload-new" data-provides="fileupload">
+          <div class="fileupload-preview thumbnail" style="width: 200px; height: 200px;"></div>
+          <div>
+            <span class="btn btn-file"><span class="fileupload-new">Select Logo</span>
+            <span class="fileupload-exists">Change</span><%= f.file_field :logo %></span>
+            <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+          </div>
+      </div>  <!-- fileupload  -->
+      <div class='biz_captcha'><%= show_simple_captcha %></div>
+      <div class='biz_terms'>
+        <div class='checkbox inline'>
+          <%= f.check_box :terms_of_service %>
+          <%= label_tag {"I agree to the  #{link_to "Terms of Service", terms_path}".html_safe}  %>
+        </div>
+      </div>
+    </div> <!-- span3  -->
+    <div class = 'span12'> </div>
+    <div class="biz_submit_form form-actions span3">
+      <%= f.button :submit, "Sign Up", :class => 'btn-primary' %>
+      <% if @biz.name? %>
+        <%= link_to "Cancel", @biz, :class => 'btn' %>
+      <% else %>
+        <%= link_to "Cancel", root_path, :class => 'btn' %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

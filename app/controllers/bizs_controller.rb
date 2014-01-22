@@ -47,11 +47,16 @@ class BizsController < ApplicationController
   # PATCH/PUT /bizs/1
   # PATCH/PUT /bizs/1.json
   def update
+    if simple_captcha_valid?
       if @biz.update(biz_params)
         redirect_to @biz, notice: 'Biz was successfully updated.'
       else
         render action: 'edit'
       end
+    else
+      flash[:error] = "Captcha incorrect. You entered the wrong digits."
+      redirect_to :back
+    end
   end
 
   # DELETE /bizs/1
@@ -69,7 +74,7 @@ class BizsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def biz_params
-      params.require(:biz).permit(:name, :email, :website, :logo, :password, :password_confirmation,
+      params.require(:biz).permit(:name, :email, :website, :logo, :password, :password_confirmation, :terms_of_service,
                     stores_attributes:[:id, :street1, :street2, :city, :state, :zip_code, 
                                        :phone_number, :contact_name, :hours, :days, :lat, :lng, :biz_id])
     end

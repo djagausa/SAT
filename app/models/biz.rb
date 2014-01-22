@@ -6,6 +6,8 @@ class Biz < ActiveRecord::Base
 	has_many 	:products
 
 	validates :name, presence: true
+ 	validates_acceptance_of :terms_of_service, allow_nil: false
+
 
 	has_attached_file 	:logo, :styles => { :small => "150x150>", :medium => "300x300>" }
 						# :url => ":rails_root/public/assets/prducts/:id/:style/:basename.:extension",

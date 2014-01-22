@@ -42,7 +42,7 @@ class ShoppersController < ApplicationController
         user = User.authenticate(params[:shopper][:email], params[:shopper][:password])
         sat_sign_in(user)
         product_cats = params[:shopper][:category_ids][0...-1]
-        @shopper.categories = product_cats.map {|id| Category.find(id)}
+        @shopper.categories = product_cats.map {|id| Category.find(id).order_by(name)}
         redirect_to @shopper, notice: 'Shopper was successfully created.'
       else
         render action: 'new'
@@ -93,7 +93,7 @@ class ShoppersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shopper_params
-      params.require(:shopper).permit(:email, :zip_code, :distance, :home_page, :lat, :lng, :password, :password_confirmation)
+      params.require(:shopper).permit(:email, :zip_code, :distance, :home_page, :lat, :lng, :password, :password_confirmation, :terms_of_service)
     end
 
     def correct_shopper
