@@ -47,7 +47,7 @@
       <div class='biz_terms'>
         <div class='checkbox inline'>
           <%= f.check_box :terms_of_service %>
-          <%= label_tag {"I agree to the  #{link_to "Terms of Service", terms_path}".html_safe}  %>
+          <%= label_tag {"I agree to the  #{link_to "Terms of Service", "#myModal", :"data-toggle" => "modal"}".html_safe}  %>
         </div>
       </div>
     </div> <!-- span3  -->
@@ -61,4 +61,5 @@
       <% end %>
     </div>
   <% end %>
+  <%= render 'shared/modal_terms'  %>
 </div>
