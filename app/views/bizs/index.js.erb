@@ -1,0 +1,5 @@
+$(function(){
+	$('.biz_thumbnails').remove();
+	$(".biz_products_display_container").html("<%= escape_javascript(render 'display_biz_products')%>");
+	$(".page").html("<%= escape_javascript(render 'page')%>");
+});

@@ -13,9 +13,7 @@ class Product < ActiveRecord::Base
 	validates_attachment_size :photo, :less_than => 5.megabytes
 	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
-	# scope :not_expired, -> {where('products.to_date >= ?', Date.today()).includes(:biz).order(:to_date).all}
-
-	scope :by_biz_id, -> (id) {where('biz_id = ?', id).order('to_date')}
+	scope :by_biz_id, -> (id, page) {where('biz_id = ?', id).order('to_date').page(page).per(5)}
 
 	acts_as_mappable :through => :stores
 

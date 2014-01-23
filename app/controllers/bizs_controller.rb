@@ -6,14 +6,14 @@ class BizsController < ApplicationController
   # GET /bizs
   # GET /bizs.json
   def index
-    @bizs = Biz.all
+        @products = Product.by_biz_id(params[:id], params[:page])
   end
 
   # GET /bizs/1
   # GET /bizs/1.json
   def show
     @stores = @biz.stores
-    @products = Product.by_biz_id(@biz)
+    @products = Product.by_biz_id(@biz, params[:page])
   end
 
   # GET /bizs/new

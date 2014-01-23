@@ -1,9 +1,9 @@
-    <ul class="thumbnails" > 
+    <ul class="biz_thumbnails" > 
       <li class="span12"> 
         <% @products.in_groups_of(1, false) do |products| %>
           <% products.each do |product| %>
-            <div class="thumbnail biz_product_thumb" style="height: 200px;">  
-              <div class="span2">
+            <div class="thumbnail biz_product_thumb">  
+              <div class="span2 biz_image_container">
                 <% if !product.photo_file_name.nil? %>
                   <%= image_tag product.photo.url(:small) %>
                 <% else %>
@@ -25,7 +25,7 @@
                 <P class="biz_product_desc">Category: <%= Category.find(product.category).name %></p>
               </div>
           <% end %>
-        </div>
+        </div> <!-- thumbnail  -->
       <% end %>
     </li>  
   </ul>

@@ -18,8 +18,13 @@
 	background: transparent;
 	border: none;
 }
-.biz_product_thumb{
+.thumbnail.biz_product_thumb{
 	margin-bottom: 10px;
+	height: auto;
+	overflow: auto;
+}
+.biz_thumbnails{
+	list-style: none;
 }
 .biz_signup_form{
   width: 500px;
@@ -31,6 +36,13 @@
 	padding-top: 40px;
 	padding-left: 20px;
 	width: 300px;
+}
+.biz_image_container{
+	padding-top: 10px;
+	height: 200px;
+}
+.biz_product_btn{
+	padding-top: 10px;
 }
 .biz_errors{
 	padding: 5px;

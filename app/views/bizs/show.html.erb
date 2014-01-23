@@ -44,9 +44,12 @@
   <hr></hr>
   <% if !@products.nil? %>
   <h4>Products:</h4>
-    <div class="span8">
+    <div class="span12 biz_products_display_container">
       <%= render 'display_biz_products' %> 
     </div>
+    <div class="page">
+      <%= render 'page'  %>
+    </div> 
   <% end %>
 </div>  <!-- container  -->
 
