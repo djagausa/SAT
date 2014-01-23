@@ -18,6 +18,7 @@ Sat::Application.routes.draw do
   resources :abouts, only:    [:index]
   resources :faqs, only:      [:index]
   resources :privacy, only:   [:index]
+  resources :supports, only:   [:index]
 
   resources :password_resets
   resources :stores
