@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html>
   <head>
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <title>Shop Around Town</title>
@@ -12,17 +11,22 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
-  <div id="main">
+    <div class="wrapper">
+
   <body>
-    <div class="container">
+    <div id="main">
+    <header>
+    <div class="header">
       <%= head_paratial_selection (params)  %>
-      <div class="container master-container">
+    </div>
+    </header>
+    <div class="container master-container">
         <% flash.each do |key, value| %>
           <div class="alert"><%= value %></div>
         <% end %>
         <%= yield %>
       </div>
-    </div> <!-- container  -->
+    </div> <!-- main  -->
     <footer class="footer">
       <div class="container">
         <ul class="footer-links span3">
@@ -49,9 +53,7 @@
       </footer>
       
   </body>
-    </div>
-
-
+</div>
 </html>
 
 
