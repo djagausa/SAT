@@ -1,4 +1,5 @@
 Sat::Application.routes.draw do
+  get "terms/index"
   get "password_resets/new"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -11,17 +12,18 @@ Sat::Application.routes.draw do
 
   post 'home/create'
 
-  resource :session, only:  [:new, :create, :destroy]
+  resource :session, only:    [:new, :create, :destroy]
   resources :home, only:      [:index, :create]
   resources :contacts, only:  [:new, :create]
+  resources :terms, only:     [:index]
+  resources :abouts, only:    [:index]
+  resources :faqs, only:      [:index]
 
   resources :password_resets
   resources :stores
   resources :shoppers
   resources :products
-  resources :abouts
-  resources :faqs
-  resources :terms
+
 
   resources :categories, shallow: true  do
     resources :products
