@@ -1,5 +1,4 @@
 Sat::Application.routes.draw do
-  get "terms/index"
   get "password_resets/new"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -18,6 +17,7 @@ Sat::Application.routes.draw do
   resources :terms, only:     [:index]
   resources :abouts, only:    [:index]
   resources :faqs, only:      [:index]
+  resources :privacy, only:   [:index]
 
   resources :password_resets
   resources :stores
