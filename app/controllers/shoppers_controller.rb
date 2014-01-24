@@ -31,6 +31,7 @@ class ShoppersController < ApplicationController
 
   # GET /shoppers/1/edit
   def edit
+    @shopper = Shopper.find(params[:id])
   end
 
   # POST /shoppers

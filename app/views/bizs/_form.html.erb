@@ -30,7 +30,7 @@
    </div>  <!-- form-horizontal  -->  
    <div class='span3'>
      <div class='biz_logo'>
-      <% if @biz.logo_image? %>
+      <% if @biz.logo_file_name? %>
         <p>Current Logo</p>
         <%= image_tag @biz.logo.url(:medium) %>
       <% end %>
@@ -53,10 +53,11 @@
     </div> <!-- span3  -->
     <div class = 'span12'> </div>
     <div class="biz_submit_form form-actions span3">
-      <%= f.button :submit, "Sign Up", :class => 'btn-primary' %>
       <% if @biz.name? %>
+        <%= f.button :submit, "Save", :class => 'btn-primary' %>
         <%= link_to "Cancel", @biz, :class => 'btn' %>
       <% else %>
+        <%= f.button :submit, "Sign Up", :class => 'btn-primary' %>
         <%= link_to "Cancel", root_path, :class => 'btn' %>
       <% end %>
     </div>

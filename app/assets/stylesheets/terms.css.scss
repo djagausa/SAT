@@ -2,5 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .terms_container{
-	height: 700px;
+	height: $page_height;
+	color: black;
+	font-size: 17px;
 }

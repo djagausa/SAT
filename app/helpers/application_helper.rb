@@ -21,8 +21,11 @@ module ApplicationHelper
 	   		else
 	   			render 'head_nav'
 	   		end
-	   	else
+	   	elsif params[:controller] == 'home'
+
 	   		render 'head_nav'
+	   	else
+	   		render 'shared/head_nav'
 	   	end
 	end
 end
