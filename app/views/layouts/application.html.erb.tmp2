@@ -11,22 +11,34 @@
 
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+  <script type="text/javascript">
+  $(function() {
+    // body...
+    $('a[data-popup]').click(function () {
+      alert("term clicker");
+      return false;
+    })
+    $('a[data-popup]').live('click', function(e) {
+      window.open( $(this).attr('href'), "Popup", "height=600, width=600" );
+      e.preventDefault();
+    });
+  })
+
+    </script>
   </head>
-  <div class="wrapper">
+  <div id="wrap">
+  <div id="main">
   <body>
-    <div id="main">
-    <header>
-    <div class="header">
-      <%= head_paratial_selection (params)  %>
-    </div>
-    </header>
+    <div class="container">
+    <%= head_paratial_selection (params)  %>
     <div class="container master-container">
-        <% flash.each do |key, value| %>
-          <div class="alert"><%= value %></div>
-        <% end %>
-        <%= yield %>
-      </div>
-    </div> <!-- main  -->
+      <% flash.each do |key, value| %>
+        <div class="alert"><%= value %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </div>
+  </div>
     <footer class="footer">
       <div class="container">
         <ul class="footer-links span3">
@@ -35,24 +47,24 @@
         </ul>
         <ul class="footer-links span3">
           <h5>Policies</h5>  
-          <li><%= link_to "Terms & Conditions", terms_path  %></li>  
-          <li><%= link_to "Privacy Policy", privacy_index_path  %></li>  
+          <li><%= link_to "Terms & Conditions", faqs_path  %></li>  
+          <li><%= link_to "Privacy Policy", faqs_path  %></li>  
 
         </ul>
         <ul class="footer-links span3">
           <h5>Support</h5> 
           <li><%= link_to "FAQs", faqs_path  %></li>  
-          <li><%= link_to "Support", supports_path  %></li>  
+          <li><%= link_to "Support", faqs_path  %></li>  
           <li><%= link_to "Contact", new_contact_path  %></li>  
         </ul>
         
       </div>
+      </footer>
       <div class="footer-copyright span12">
           <p>Copyright 2013 <%= link_to "Shop Around Town", root_path  %></p>
       </div>
-      </footer>
+    </div>
   </body>
-  </div>
 </html>
 
 

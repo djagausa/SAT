@@ -55,6 +55,7 @@ body:after{content: '';
 header{
   height: 25px
 }
+
 .alert p.error_notification {
   margin-bottom: 0;
 }
@@ -82,7 +83,7 @@ div.well {
 }
 .footer {
   height: 120px;
-  position: absolute;
+/*  position: absolute;*/
   bottom: 0px;
   right: 0;
   left: 0;
@@ -91,6 +92,7 @@ div.well {
   border-top: 1px solid #e5e5e5;
   background-color: #ECEBED
 }
+
 .footer-links {
   margin: 0px 0;
 }

@@ -8,19 +8,18 @@
     </ul>
     </div>
 <% end %> <!-- errors -->
-<div class='shopper_new_form'>
+<div class='span4 shopper_new_form'>
   <%= simple_form_for @shopper, :html => { :class => 'form-horizontal' } do |f| %>
     <%= f.input :email %>
     <%= f.input :zip_code %>
     <%= f.input :distance %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
-    <%= f.association :categories, as: :check_boxes, collection: Category.order('name ASC') %>
     <div class='shopper_captcha'><%= show_simple_captcha %></div>
     <div class='shopper_terms'>
       <div class='checkbox inline'>
         <%= f.check_box :terms_of_service %>
-        <%= label_tag {"I agree to the  #{link_to "Terms of Service", "#myModal", :"data-toggle" => "modal"}".html_safe}  %>
+        <%= label_tag {"I agree to the  #{link_to "Terms of Service", :data_popup => true }".html_safe}  %>
       </div>
     </div>
     <div class="form-actions">
@@ -32,6 +31,10 @@
       <% end %>
     </div>
     <%= render 'shared/modal_terms'  %>
-  <% end %>
+  <%= link_to "test popup", root_path, :data_popup => true %>
 </div> <!--  shopper_new_form -->
+<div class='span4 shopper_category_container' >
+    <%= f.association :categories, as: :check_boxes, collection: Category.order('name ASC') %>
+</div>
+  <% end %>
 

@@ -4,8 +4,6 @@ class CreateBizs < ActiveRecord::Migration
       t.string :name
       t.string :website
       t.string :logo_image
-      t.string :email
-      t.string :password_digest
 
       t.timestamps
     end

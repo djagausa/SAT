@@ -30,7 +30,7 @@
    </div>  <!-- form-horizontal  -->  
    <div class='span3'>
      <div class='biz_logo'>
-      <% if @biz.logo_file_name? %>
+      <% if @biz.logo_file_name? && !@biz.errors.any? %>
         <p>Current Logo</p>
         <%= image_tag @biz.logo.url(:medium) %>
       <% end %>
